@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro de aluno</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="cadastroForm">
+    <div class="ion-text-center ion-margin-top">
+      <ion-label class="titulo">Instituição</ion-label>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Nome da instituição</ion-label>
+      <ion-input class="input" formControlName="intituicaoNome" maxlength="255"></ion-input>
+    </div>
+
+    <ion-item class="ion-margin-bottom ion-margin">
+      <ion-label>Turno</ion-label>
+      <ion-select formControlName="turno" interface="popover">
+        <ng-template ngFor let-item [ngForOf]="globalService.turnoList" let-i="index">
+          <ion-select-option value="{{item.codigo}}">{{item.descricao}}</ion-select-option>
+        </ng-template>
+      </ion-select>
+    </ion-item>
+
+    <div class="input-div">
+      <ion-label position="stacked">Horário</ion-label>
+
+      <ion-item class="ion-margin-bottom ion-margin">
+        <ion-label>De:</ion-label>
+        <ion-input [brmasker]="{mask:'00:00', len:5, userCaracters: false, type: 'num'}" inputmode="numeric" formControlName="horarioDe"
+        (change)="horarioDeChange()"></ion-input>
+        <div class="ion-text-center" *ngIf="!horarioDeValido">
+          <span class="validator-span">Horario inválido</span>
+        </div>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom ion-margin">
+        <ion-label>Até:</ion-label>
+        <ion-input [brmasker]="{mask:'00:00', len:5, userCaracters: false, type: 'num'}" inputmode="numeric" formControlName="horarioAte"
+        (change)="horarioAteChange()"></ion-input>
+        <div class="ion-text-center" *ngIf="!horarioAteValido">
+          <span class="validator-span">Horario inválido</span>
+        </div>
+      </ion-item>
+      </div>
+
+  </form>
+
+  <div class="div-btn">
+    <div class="ion-text-center">
+      <span class="validator-span">{{valitationText}}</span>
+    </div>
+    <button class="btn btn-preto" (click)="onAvancar()">Avançar</button>
+  </div>
+</ion-content>

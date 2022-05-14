@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro de motorista</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-text-center mt-6 ion-margin">
+    <div>
+      <label class="confortaa bold">Cadastro realizado com sucesso!</label>
+    </div>
+  
+    <div class="mt-4">
+      <label class="confortaa">
+        Forneça o <strong>código</strong> ou <strong>QrCode</strong> abaixo para que os alunos possam ingressar no seu escolar.
+        Você poderá consultá-los novamente na na aba <strong>Perfil</strong>.
+      </label>
+    </div>
+
+    <div class="mt-4">
+      <label class="confortaa">
+        <strong>{{codigoGerado}}</strong>
+      </label>
+    </div>
+
+    <div class="mt-3">
+      <ion-card>
+        <ion-card-content>
+          <img title="qrCode" [src]="qrCodeGerado" />
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+  
+  <div class="div-btn">
+    <button class="btn btn-verde" (click)="onEntrar()">Entrar</button>
+  </div>
+</ion-content>

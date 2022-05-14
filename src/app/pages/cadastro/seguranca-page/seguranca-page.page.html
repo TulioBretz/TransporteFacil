@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro de {{cadastroTipoText}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-text-center ion-margin-top mb-3">
+    <ion-label class="titulo">Segurança</ion-label>
+  </div>
+
+  <form [formGroup]="cadastroForm">
+
+    <div class="ion-text-center ion-margin">
+      <span class="information-span">
+        A senha deve conter no mínimo 8 dígitos com: letras, números e caracteres especiais.
+      </span>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Senha</ion-label>
+      <ion-input class="input" type="password" formControlName="senha" minlength="8" maxlength="50"
+      (change)="onSenhaChange()"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Confirmar senha</ion-label>
+      <ion-input class="input" type="password" formControlName="confirmarSenha" minlength="8" maxlength="50">
+      </ion-input>
+    </div>
+  </form>
+
+  <div class="div-btn">
+    <div class="ion-text-center">
+      <span class="validator-span">{{valitationText}}</span>
+    </div>
+    <button class="btn btn-preto" (click)="onAvancar()" *ngIf="cadastroTipoText === 'motorista'">Avançar</button>
+    <button class="btn btn-verde" (click)="onEntrar()" *ngIf="cadastroTipoText === 'aluno'">Entrar</button>
+  </div>
+</ion-content>

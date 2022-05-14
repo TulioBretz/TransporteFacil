@@ -1,0 +1,29 @@
+<ion-content>
+  <div class="ion-text-center logo-div">
+    <ion-label class="titulo logo-label">Transporte Fácil</ion-label>
+  </div>
+
+  <div class="absolute-bottom">
+    <ion-item lines="none" class="input-item">
+      <ion-icon name="person-outline" class="ion-padding-end"></ion-icon>
+      <ion-input placeholder="CPF"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="input-item">
+      <ion-icon name="key-outline" class="ion-padding-end"></ion-icon>
+      <ion-input placeholder="Senha" type="password"></ion-input>
+    </ion-item>
+
+    <div class="ion-text-center ion-margin-bottom">
+      <span class="text-red">Esqueci minha senha</span>
+    </div>
+
+    <div class="div-btn">
+      <button class="btn btn-preto">Entrar</button>
+    </div>
+
+    <div class="div-btn">
+      <button class="btn btn-verde" (click)="onCadastrar()">Cadastrar</button>
+    </div>
+  </div>
+</ion-content>

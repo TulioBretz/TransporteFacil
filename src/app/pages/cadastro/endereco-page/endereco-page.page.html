@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="cadastroForm">
+    <div class="ion-text-center ion-margin-top">
+      <ion-label class="titulo">Endereço</ion-label>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">CEP</ion-label>
+      <ion-input class="input" inputmode="numeric" formControlName="cep" minlength="9"
+        maxlength="9" (change)="cepChanged($event)"
+        [brmasker]="{mask:'00000-000', len:9, userCaracters: false, type: 'num'}"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Rua</ion-label>
+      <ion-input formControlName="rua" class="input" maxlength="255"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Bairro</ion-label>
+      <ion-input formControlName="bairro" class="input" maxlength="255"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Cidade</ion-label>
+      <ion-input formControlName="cidade" class="input" maxlength="255"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Número</ion-label>
+      <ion-input [brmasker]="{mask:'000000', len:6, userCaracters: false, type: 'num'}" class="input" inputmode="numeric" formControlName="numero"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Apartamento</ion-label>
+      <ion-input [brmasker]="{mask:'000000', len:6, userCaracters: false, type: 'num'}" class="input" inputmode="numeric" formControlName="apartamento"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Bloco</ion-label>
+      <ion-input formControlName="bloco" class="input" type="number" max="99999"></ion-input>
+    </div>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-label>Estado</ion-label>
+      <ion-select formControlName="uf" interface="popover">
+        <ng-template ngFor let-item [ngForOf]="globalService.ufList" let-i="index">
+          <ion-select-option value="{{item.sigla}}">{{item.descricao}}</ion-select-option>
+        </ng-template>
+      </ion-select>
+    </ion-item>
+  </form>
+
+  <div class="div-btn">
+    <button class="btn btn-preto" (click)="onAvancar()">Avançar</button>
+  </div>
+</ion-content>

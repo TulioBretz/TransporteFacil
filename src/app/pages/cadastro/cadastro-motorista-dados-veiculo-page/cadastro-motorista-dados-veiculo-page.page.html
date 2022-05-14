@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro de motorista</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="cadastroForm">
+    <div class="ion-text-center ion-margin-top">
+      <ion-label class="titulo">Veículo</ion-label>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Placa</ion-label>
+      <ion-input class="input ion-text-uppercase" formControlName="placa" minlength="8"
+        maxlength="8" [brmasker]="{mask:'AAA-9999', len:8, userCaracters: true}"></ion-input>
+    </div>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-label>Cor</ion-label>
+      <ion-select formControlName="cor" interface="popover">
+        <ng-template ngFor let-item [ngForOf]="globalService.corVeiculoList" let-i="index">
+          <ion-select-option value="{{item.codigo}}">{{item.descricao}}</ion-select-option>
+        </ng-template>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-label>Tipo de veículo</ion-label>
+      <ion-select formControlName="tipo" interface="popover">
+        <ng-template ngFor let-item [ngForOf]="globalService.tipoVeiculoList" let-i="index">
+          <ion-select-option value="{{item.codigo}}">{{item.descricao}}</ion-select-option>
+        </ng-template>
+      </ion-select>
+    </ion-item>
+  </form>
+
+  <div class="div-btn">
+    <button class="btn btn-preto" (click)="onAvancar()">Avançar</button>
+  </div>
+</ion-content>
