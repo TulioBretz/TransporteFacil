@@ -1,6 +1,8 @@
+import { LoginPageService } from './login-page.service';
+import { BrMaskerModule } from 'br-mask';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,8 +15,11 @@ import { LoginPagePage } from './login-page.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    BrMaskerModule,
+    ReactiveFormsModule,
     LoginPagePageRoutingModule
   ],
-  declarations: [LoginPagePage]
+  declarations: [LoginPagePage],
+  providers: [LoginPageService]
 })
 export class LoginPagePageModule {}

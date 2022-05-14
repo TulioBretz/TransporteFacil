@@ -1,3 +1,4 @@
+import { RequestsService } from './compartilhado/services/requests.service';
 import { GlobalService } from 'src/app/compartilhado/services/global.service';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,7 +15,7 @@ import { AppComponent } from './app.component';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot( { backButtonText: '' }), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, GlobalService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, GlobalService, RequestsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -4,22 +4,25 @@
   </div>
 
   <div class="absolute-bottom">
-    <ion-item lines="none" class="input-item">
-      <ion-icon name="person-outline" class="ion-padding-end"></ion-icon>
-      <ion-input placeholder="CPF"></ion-input>
-    </ion-item>
+    <form [formGroup]="cadastroForm">
+      <ion-item lines="none" class="input-item">
+        <ion-icon name="person-outline" class="ion-padding-end"></ion-icon>
+        <ion-input [brmasker]="{mask:'000.000.000-00', len:14}" formControlName="cpf" inputmode="numeric"
+          placeholder="CPF"></ion-input>
+      </ion-item>
 
-    <ion-item lines="none" class="input-item">
-      <ion-icon name="key-outline" class="ion-padding-end"></ion-icon>
-      <ion-input placeholder="Senha" type="password"></ion-input>
-    </ion-item>
+      <ion-item lines="none" class="input-item">
+        <ion-icon name="key-outline" class="ion-padding-end"></ion-icon>
+        <ion-input placeholder="Senha" type="password"></ion-input>
+      </ion-item>
+    </form>
 
     <div class="ion-text-center ion-margin-bottom">
       <span class="text-red">Esqueci minha senha</span>
     </div>
 
     <div class="div-btn">
-      <button class="btn btn-preto">Entrar</button>
+      <button class="btn btn-preto" (click)="onEntrar">Entrar</button>
     </div>
 
     <div class="div-btn">
