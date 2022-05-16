@@ -31,7 +31,7 @@ export class CadastroAlunoDadosInstituicaoPagePage implements OnInit {
   }
 
   horarioDeChange() {
-    if (this.cadastroForm.get('horarioDe').value.length < 5) {
+    if (this.cadastroForm.get('horarioDe').value.length > 0 && this.cadastroForm.get('horarioDe').value.length < 5) {
       this.cadastroForm.get('horarioDe').setValue(this.cadastroForm.get('horarioDe').value.padEnd(5, '0'));
     }
 
@@ -39,7 +39,7 @@ export class CadastroAlunoDadosInstituicaoPagePage implements OnInit {
   }
 
   horarioAteChange() {
-    if (this.cadastroForm.get('horarioAte').value.length < 5) {
+    if (this.cadastroForm.get('horarioAte').value.length > 0 && this.cadastroForm.get('horarioAte').value.length < 5) {
       this.cadastroForm.get('horarioAte').setValue(this.cadastroForm.get('horarioAte').value.padEnd(5, '0'));
     }
 

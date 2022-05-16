@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  // },
   {
     path: '',
-    loadChildren: () => import('./pages/login-page/login-page.module').then( m => m.LoginPagePageModule)
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
+  // {
+  //   path: 'login',
+  //   loadChildren: () => import('./pages/login-page/login-page.module').then( m => m.LoginPagePageModule)
+  // },
   {
     path: 'login-page',
-    loadChildren: () => import('./pages/login-page/login-page.module').then( m => m.LoginPagePageModule)
+    loadChildren: () => import('./pages/login/login-page.module').then( m => m.LoginPagePageModule)
   },
   {
     path: 'dados-pessoais-page',
@@ -41,6 +41,10 @@ const routes: Routes = [
   {
     path: 'cadastro-realizado-page',
     loadChildren: () => import('./pages/cadastro/cadastro-realizado-page/cadastro-realizado-page.module').then( m => m.CadastroRealizadoPagePageModule)
+  },
+  {
+    path: 'ingressar-page',
+    loadChildren: () => import('./pages/aluno-ingressar/ingressar-page/ingressar-page.module').then( m => m.IngressarPagePageModule)
   }
 ];
 @NgModule({

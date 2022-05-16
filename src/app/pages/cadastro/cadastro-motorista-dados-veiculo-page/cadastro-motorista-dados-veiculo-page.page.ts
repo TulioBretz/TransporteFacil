@@ -12,9 +12,9 @@ import { NavigationExtras } from '@angular/router';
 export class CadastroMotoristaDadosVeiculoPagePage implements OnInit {
 
   cadastroForm = this.fb.group({
-    placa: ['', Validators.required],
-    cor: ['', Validators.required],
-    tipo: ['', Validators.required],
+    placa: ['',],
+    cor: [''],
+    tipo: [''],
   });
 
   constructor(private fb: FormBuilder, private navCtrl: NavController, public globalService: GlobalService) { }

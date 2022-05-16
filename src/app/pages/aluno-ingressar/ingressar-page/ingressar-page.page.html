@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center ion-margin-top">
+    <ion-label class="titulo">Ingressar</ion-label>
+  </div>
+
+  <div class="div-center">
+    <div class="input-div mt-3">
+      <ion-label position="stacked">Código do escolar</ion-label>
+      <ion-input id="codigoEscolar" class="input" maxlength="255"></ion-input>
+    </div>
+
+    <div class="mt-2 ion-text-center">
+      <label><strong>OU</strong></label>
+    </div>
+
+    <div class="div-btn mt-2">
+      <button class="btn btn-preto">OBTER CÓDIGO COM QRCODE</button>
+    </div>
+
+    <div class="div-btn mt-3">
+      <button class="btn btn-verde" (click)="onConcluir()">Concluir</button>
+    </div>
+  </div>
+</ion-content>

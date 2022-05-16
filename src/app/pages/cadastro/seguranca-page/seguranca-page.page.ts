@@ -13,8 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SegurancaPagePage implements OnInit {
 
   cadastroForm = this.fb.group({
-    senha: ['', Validators.required],
-    confirmarSenha: ['', Validators.required],
+    senha: [''],
+    confirmarSenha: [''],
   });
 
   cadastroTipoText = '';

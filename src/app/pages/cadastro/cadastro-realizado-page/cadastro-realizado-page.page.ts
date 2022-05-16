@@ -9,13 +9,20 @@ import QRCode from 'qrcode';
 })
 export class CadastroRealizadoPagePage implements OnInit {
 
-  codigoGerado = 'xPT15d_ufG%';
+  codigoGerado = '';
   qrCodeGerado = '';
 
   constructor(private navCtrl: NavController) { }
 
   //TODO: Transformar para Arrow Function
   ngOnInit() {
+    let novoCodigoRandomico = '';
+    const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvxw123456789!@#$%^&*?';
+    for (let i = 0; i < 10; i++) {
+      novoCodigoRandomico += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    this.codigoGerado = novoCodigoRandomico;
+
     const qrcode = QRCode;
     const self = this;
     qrcode.toDataURL(self.codigoGerado, { errorCorrectionLevel: 'H' }, function(err, url) {

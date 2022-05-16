@@ -10,11 +10,12 @@ import { BrMaskerModule } from 'br-mask';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot( { backButtonText: '' }), AppRoutingModule],
+  imports: [HttpClientModule, BrowserModule, IonicModule.forRoot( { backButtonText: '' }), AppRoutingModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, GlobalService, RequestsService],
   bootstrap: [AppComponent],
 })

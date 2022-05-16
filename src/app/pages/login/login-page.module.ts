@@ -17,7 +17,7 @@ import { LoginPagePage } from './login-page.page';
     IonicModule,
     BrMaskerModule,
     ReactiveFormsModule,
-    LoginPagePageRoutingModule
+    LoginPagePageRoutingModule,
   ],
   declarations: [LoginPagePage],
   providers: [LoginPageService]

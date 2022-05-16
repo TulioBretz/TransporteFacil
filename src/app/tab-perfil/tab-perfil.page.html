@@ -1,0 +1,37 @@
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center ion-margin-top mt-5">
+    <ion-label class="titulo">Meu perfil</ion-label>
+  </div>
+
+  <form [formGroup]="cadastroForm">
+    <div class="input-div">
+      <ion-label position="stacked">Nome completo</ion-label>
+      <ion-input formControlName="nomeCompleto" class="input"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">CPF</ion-label>
+      <ion-input disabled="true" [brmasker]="{mask:'000.000.000-00'}" formControlName="cpf" inputmode="numeric" minlength="14"
+        maxlength="14" class="input"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">E-mail</ion-label>
+      <ion-input formControlName="email" class="input"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Confirmar E-mail</ion-label>
+      <ion-input formControlName="confirmarEmail" class="input"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Telefone</ion-label>
+      <ion-input [brmasker]="{mask:'(00) 00000-0000', len:15}" formControlName="telefone" class="input"></ion-input>
+    </div>
+  </form>
+
+  <div class="div-btn">
+    <button class="btn btn-vermelho" (click)="onSair()">Sair</button>
+  </div>
+</ion-content>
