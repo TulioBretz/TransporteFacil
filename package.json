@@ -21,6 +21,7 @@
     "@angular/router": "~13.2.2",
     "@ionic/angular": "^6.0.0",
     "br-mask": "^0.0.10",
+    "guid-typescript": "^1.0.9",
     "httpclient": "^0.1.0",
     "qrcode": "^1.5.0",
     "rxjs": "~6.6.0",

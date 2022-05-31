@@ -1,8 +1,8 @@
-import { TipoUsuarioEnum } from './../enums/error-message-enum';
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Observable, of } from 'rxjs';
+import { TipoUsuarioEnum } from '../enums/tipo-usuario-enum';
 
 @Injectable()
 export class RequestsService {

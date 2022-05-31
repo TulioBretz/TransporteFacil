@@ -32,7 +32,7 @@ export class GlobalService {
     { descricao: 'Tocantins', sigla: 'TO' }];
 
     tipoVeiculoList = [
-        { descricao: 'Automóvel', codigo: 1 },
+        { descricao: 'Carro', codigo: 1 },
         { descricao: 'Van', codigo: 2 },
         { descricao: 'Ônibus', codigo: 3 },
         { descricao: 'Microônibus', codigo: 4 },

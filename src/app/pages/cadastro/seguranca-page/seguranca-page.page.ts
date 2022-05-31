@@ -1,3 +1,4 @@
+import { CadastroService } from './../cadastro.service';
 import { GlobalService } from 'src/app/compartilhado/services/global.service';
 import { NavController } from '@ionic/angular';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -19,9 +20,10 @@ export class SegurancaPagePage implements OnInit {
 
   cadastroTipoText = '';
   valitationText = '';
+  codigoGerado = '';
 
   constructor(private fb: FormBuilder, private navCtrl: NavController, private globalService: GlobalService,
-    private route: ActivatedRoute, private router: Router) {
+    private route: ActivatedRoute, private router: Router, private cadastroService: CadastroService) {
 
     this.route.queryParams.subscribe(() => {
       const navParams = this.router.getCurrentNavigation().extras.state;
@@ -43,7 +45,7 @@ export class SegurancaPagePage implements OnInit {
     }
   }
 
-  efetuarValidacoes() {
+  efetuarValidacoes(): boolean {
     this.cadastroForm.get('senha').setValidators([Validators.required, Validators.minLength(1)]);
     this.cadastroForm.get('senha').updateValueAndValidity();
 
@@ -62,17 +64,52 @@ export class SegurancaPagePage implements OnInit {
 
     // Caso esteja exibindo alguma mensagem de validação, não deixa prosseguir
     if (this.valitationText) {
-      return;
+      return false;
     }
+
+    return true;
   }
 
+  // Fluxo motorista
   onAvancar() {
-    this.efetuarValidacoes();
+    if (!this.efetuarValidacoes()) {
+      return;
+    }
+
+    this.gerarCodigoMotorista();
+
+    this.cadastroService.dadosProvisoriosUsuarioForm.senha = this.cadastroForm.get('senha').value;
+
+    this.cadastroService.cadastrarUsuario().subscribe(resposta => {
+
+    });
+
     this.navCtrl.navigateForward('cadastro-realizado-page');
   }
 
+  // Fluxo aluno
   onEntrar() {
-    this.efetuarValidacoes();
+    if (!this.efetuarValidacoes()) {
+      return;
+    }
+
+    this.cadastroService.dadosProvisoriosUsuarioForm.senha = this.cadastroForm.get('senha').value;
+
+    this.cadastroService.cadastrarUsuario().subscribe(resposta => {
+
+    });
+
     this.navCtrl.navigateForward('login-page');
+  }
+
+  gerarCodigoMotorista() {
+    let novoCodigoRandomico = '';
+    const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvxw123456789!@#$%^?';
+    for (let i = 0; i < 10; i++) {
+      novoCodigoRandomico += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    this.codigoGerado = novoCodigoRandomico;
+
+    this.cadastroService.dadosProvisoriosMotoristaForm.codigo = this.codigoGerado;
   }
 }

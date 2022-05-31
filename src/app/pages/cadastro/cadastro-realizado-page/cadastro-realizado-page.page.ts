@@ -1,3 +1,6 @@
+import { ErrorMessageEnum } from 'src/app/compartilhado/enums/error-message-enum';
+import { RequestsService } from 'src/app/compartilhado/services/requests.service';
+import { CadastroService } from './../cadastro.service';
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import QRCode from 'qrcode';
@@ -12,16 +15,16 @@ export class CadastroRealizadoPagePage implements OnInit {
   codigoGerado = '';
   qrCodeGerado = '';
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private cadastroService: CadastroService, private requestsService: RequestsService) { }
 
   //TODO: Transformar para Arrow Function
   ngOnInit() {
-    let novoCodigoRandomico = '';
-    const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvxw123456789!@#$%^&*?';
-    for (let i = 0; i < 10; i++) {
-      novoCodigoRandomico += characters.charAt(Math.floor(Math.random() * characters.length));
+    if (!this.validarCodigoGerado()) {
+      this.requestsService.presentAlert('', 'Atenção!', ErrorMessageEnum.codigoMotoristaNaoGerado);
+      return;
     }
-    this.codigoGerado = novoCodigoRandomico;
+
+    this.codigoGerado = this.cadastroService.dadosProvisoriosMotoristaForm.codigo;
 
     const qrcode = QRCode;
     const self = this;
@@ -31,7 +34,20 @@ export class CadastroRealizadoPagePage implements OnInit {
   }
 
   onEntrar() {
+    if (!this.validarCodigoGerado()) {
+      this.requestsService.presentAlert('', 'Atenção!', ErrorMessageEnum.codigoMotoristaNaoGerado);
+      return;
+    }
+
     this.navCtrl.navigateForward('login-page');
+  }
+
+  validarCodigoGerado(): boolean {
+    if (!this.cadastroService.dadosProvisoriosMotoristaForm.codigo) {
+      return false;
+    }
+
+    return true;
   }
 
 }

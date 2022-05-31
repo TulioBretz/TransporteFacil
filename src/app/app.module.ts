@@ -11,12 +11,13 @@ import { BrMaskerModule } from 'br-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CadastroService } from './pages/cadastro/cadastro.service';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [HttpClientModule, BrowserModule, IonicModule.forRoot( { backButtonText: '' }), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, GlobalService, RequestsService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, GlobalService, RequestsService, CadastroService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

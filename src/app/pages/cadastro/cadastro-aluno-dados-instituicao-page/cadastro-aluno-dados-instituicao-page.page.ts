@@ -14,10 +14,10 @@ import { NavigationExtras } from '@angular/router';
 export class CadastroAlunoDadosInstituicaoPagePage implements OnInit {
 
   cadastroForm = this.fb.group({
-    intituicaoNome: [''],
-    turno: [''],
-    horarioDe: [''],
-    horarioAte: ['']
+    intituicaoNome: ['Puc Minas'],
+    turno: ['1'],
+    horarioDe: ['07:00'],
+    horarioAte: ['12:20']
   });
 
   horarioDeValido = true;

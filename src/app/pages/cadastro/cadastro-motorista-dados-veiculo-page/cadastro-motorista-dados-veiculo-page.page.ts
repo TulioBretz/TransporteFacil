@@ -1,3 +1,4 @@
+import { CadastroService } from './../cadastro.service';
 import { GlobalService } from 'src/app/compartilhado/services/global.service';
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
@@ -12,12 +13,13 @@ import { NavigationExtras } from '@angular/router';
 export class CadastroMotoristaDadosVeiculoPagePage implements OnInit {
 
   cadastroForm = this.fb.group({
-    placa: ['',],
-    cor: [''],
-    tipo: [''],
+    placa: ['ABC4848',],
+    cor: ['17'],
+    tipo: ['3'],
   });
 
-  constructor(private fb: FormBuilder, private navCtrl: NavController, public globalService: GlobalService) { }
+  constructor(private fb: FormBuilder, private navCtrl: NavController, public globalService: GlobalService,
+    private cadastroService: CadastroService) { }
 
   ngOnInit() {
   }
@@ -41,6 +43,11 @@ export class CadastroMotoristaDadosVeiculoPagePage implements OnInit {
     //   this.valitationText = ErrorMessageEnum.emailDivergente;
     //   return;
     // }
+
+    this.cadastroService.dadosProvisoriosMotoristaForm.dadosVeiculo.placa = this.cadastroForm.get('placa').value;
+    this.cadastroService.dadosProvisoriosMotoristaForm.dadosVeiculo.cor = this.cadastroForm.get('cor').value;
+    this.cadastroService.dadosProvisoriosMotoristaForm.dadosVeiculo.usuarioId = this.cadastroService.dadosProvisoriosUsuarioForm.id;
+    this.cadastroService.dadosProvisoriosMotoristaForm.dadosVeiculo.tipoVeiculo = this.cadastroForm.get('tipo').value;
 
     const navigationExtras: NavigationExtras = {
       state: {

@@ -1,6 +1,6 @@
 import { RequestsService } from 'src/app/compartilhado/services/requests.service';
 import { Component, OnInit } from '@angular/core';
-import { TipoUsuarioEnum } from '../compartilhado/enums/error-message-enum';
+import { TipoUsuarioEnum } from '../compartilhado/enums/tipo-usuario-enum';
 
 @Component({
   selector: 'app-tabs',

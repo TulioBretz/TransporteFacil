@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
 import { RequestsService } from 'src/app/compartilhado/services/requests.service';
+import { CadastroService } from '../cadastro/cadastro.service';
 
 @Component({
   selector: 'app-login-page',
@@ -18,9 +19,11 @@ export class LoginPagePage implements OnInit {
   });
 
   constructor(public navCtrl: NavController, private fb: FormBuilder, private loginService: LoginPageService,
-    private requestsService: RequestsService, private alertController: AlertController) { }
+    private requestsService: RequestsService, private alertController: AlertController, private cadastroService: CadastroService) { }
 
   ngOnInit() {
+
+
   }
 
   onCadastrar() {
