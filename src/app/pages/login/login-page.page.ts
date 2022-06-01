@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
 import { RequestsService } from 'src/app/compartilhado/services/requests.service';
 import { CadastroService } from '../cadastro/cadastro.service';
+import { GlobalService } from 'src/app/compartilhado/services/global.service';
 
 @Component({
   selector: 'app-login-page',
@@ -14,8 +15,8 @@ import { CadastroService } from '../cadastro/cadastro.service';
 export class LoginPagePage implements OnInit {
 
   cadastroForm = this.fb.group({
-    cpf: [''],
-    senha: [''],
+    cpf: ['11248651600'],
+    senha: ['123'],
   });
 
   constructor(public navCtrl: NavController, private fb: FormBuilder, private loginService: LoginPageService,
@@ -31,16 +32,21 @@ export class LoginPagePage implements OnInit {
   }
 
   onEntrar() {
-    // if (!this.cadastroForm.get('cpf').value || !this.cadastroForm.get('senha').value) {
-    //   this.requestsService.presentAlert('Falha ao logar', '', 'CPF ou Senha incorretos');
-    //   return;
-    // }
+    if (!this.cadastroForm.get('cpf').value || !this.cadastroForm.get('senha').value) {
+      this.requestsService.presentAlert('Falha ao logar', '', 'CPF ou Senha incorretos');
+      return;
+    }
 
-    // this.loginService.efetuarLogin(this.cadastroForm.get('cpf').value, this.cadastroForm.get('senha').value).subscribe(resposta => {
-    //   this.navCtrl.navigateRoot('');
-    // });
-
-    this.navCtrl.navigateRoot('');
-
+    this.loginService.efetuarLogin(this.cadastroForm.get('cpf').value, this.cadastroForm.get('senha').value).subscribe(resposta => {
+      console.log(resposta, 'resposta');
+      if (resposta && resposta.length === 0) {
+        this.requestsService.presentToastTop('Dados de acesso inválidos');
+        return;
+      }
+      else if (resposta && resposta.length > 0) {
+        this.requestsService.dadosUsuarioLogado = resposta[0];
+          this.navCtrl.navigateRoot('');
+      }
+    });
   }
 }

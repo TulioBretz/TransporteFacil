@@ -16,6 +16,7 @@ export class Usuario {
     bloco: number;
     uf: string;
     isMotorista: boolean;
+    codigoEscolar: string;
 
     // cadastrarUsuario() {
     //     console.log(this, 'THIS');

@@ -1,3 +1,4 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,7 @@ import { BrMaskerModule } from 'br-mask';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
     BrMaskerModule,
     RouterModule.forChild([{ path: '', component: TabPerfilPage }]),
     PerfilPageRoutingModule,

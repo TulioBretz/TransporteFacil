@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Alterar meus dados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="cadastroForm">
+    <div class="input-div mt-4">
+      <ion-label position="stacked">Nome</ion-label>
+      <ion-input formControlName="nome" class="input"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">CPF</ion-label>
+      <ion-input disabled="true" [brmasker]="{mask:'000.000.000-00'}" formControlName="cpf" inputmode="numeric"
+        minlength="14" maxlength="14" class="input"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">E-mail</ion-label>
+      <ion-input formControlName="email" class="input"></ion-input>
+    </div>
+
+    <div class="input-div" *ngIf="modoEdicao">
+      <ion-label position="stacked">Confirmar e-mail</ion-label>
+      <ion-input formControlName="confirmarEmail" class="input"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Telefone</ion-label>
+      <ion-input [brmasker]="{mask:'(00) 00000-0000', len:15}" formControlName="telefone" class="input"></ion-input>
+    </div>
+  </form>
+
+  <div class="div-btn">
+    <button *ngIf="!modoEdicao" class="btn btn-verde" (click)="onEditar()">Editar</button>
+    <button *ngIf="modoEdicao" class="btn btn-verde" (click)="onEditar()">Salvar</button>
+  </div>
+</ion-content>

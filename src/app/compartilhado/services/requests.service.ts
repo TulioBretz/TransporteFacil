@@ -1,3 +1,4 @@
+import { Usuario } from './../models/Usuario';
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
@@ -14,8 +15,9 @@ export class RequestsService {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
+    dadosUsuarioLogado: Usuario = new Usuario();
     tipoUsuarioLogado = TipoUsuarioEnum.aluno;
-    usuarioIngressadoEmEscolar = true;
+    usuarioIngressadoEmEscolar = false;
 
     constructor(private toastController: ToastController, private alertController: AlertController) {
     }
@@ -23,7 +25,7 @@ export class RequestsService {
     async presentToastTop(msg: string) {
         const toast = await this.toastController.create({
             message: msg,
-            duration: 7000,
+            duration: 3000,
             keyboardClose: true,
             position: 'top'
         });
@@ -31,10 +33,9 @@ export class RequestsService {
     }
 
     async presentToastMiddle(msg: string) {
-        console.log('ddd');
         const toast = await this.toastController.create({
             message: msg,
-            duration: 2000,
+            duration: 3000,
             keyboardClose: true,
             position: 'middle'
         });
@@ -44,7 +45,7 @@ export class RequestsService {
     async presentToastBottom(msg: string) {
         const toast = await this.toastController.create({
             message: msg,
-            duration: 7000,
+            duration: 3000,
             keyboardClose: true,
             position: 'bottom'
         });

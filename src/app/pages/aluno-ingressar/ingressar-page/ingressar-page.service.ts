@@ -12,7 +12,8 @@ export class IngressarPageService {
 
     //TODO: Criar modelo de rotorno para o login
     validarCodigoEscolarParaIngresso(codigoInformado: string): Observable<any> {
-        return this.http.get<any>(this.requestsService.serverRoute + '/api/login/' + codigoInformado)
+        return this.http.get<any>(this.requestsService.serverRoute + '/api/usuarios/ingressar/' + codigoInformado +
+        '/' + this.requestsService.dadosUsuarioLogado.id)
             .pipe(
                 catchError(this.requestsService.handleError<any>('efetuar login'))
             );

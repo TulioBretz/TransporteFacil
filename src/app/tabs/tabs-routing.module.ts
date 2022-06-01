@@ -20,6 +20,18 @@ const routes: Routes = [
         loadChildren: () => import('../tab-perfil/tab-perfil.module').then(m => m.TabPerfilPageModule)
       },
       {
+        path: 'tab-motorista-codigo',
+        loadChildren: () => import('../tab-motorista-codigo/tab-motorista-codigo.module').then(m => m.TabMotoristaCodigoPageModule)
+      },
+      {
+        path: 'tab-grupos',
+        loadChildren: () => import('../tab-grupos/tab-grupos.module').then(m => m.TabGruposPageModule)
+      },
+      {
+        path: 'tab-alunos',
+        loadChildren: () => import('../tab-alunos/tab-alunos.module').then(m => m.TabAlunosPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

@@ -1,7 +1,7 @@
 import { NavController } from '@ionic/angular';
 import { RequestsService } from 'src/app/compartilhado/services/requests.service';
-import { element } from 'protractor';
 import { Component, OnInit } from '@angular/core';
+import { IngressarPageService } from './ingressar-page.service';
 
 @Component({
   selector: 'app-ingressar-page',
@@ -10,12 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IngressarPagePage implements OnInit {
 
-  constructor(private requestsService: RequestsService, private navCtrl: NavController) { }
+  constructor(private requestsService: RequestsService, private navCtrl: NavController,
+    private ingressarPageService: IngressarPageService) { }
 
   ngOnInit() {
   }
 
-  onConcluir() {
+  onIngressar() {
     const codigoEscolarInserido = document.getElementById('codigoEscolar') as HTMLInputElement | null;
     const value = codigoEscolarInserido?.value;
 
@@ -24,7 +25,19 @@ export class IngressarPagePage implements OnInit {
       return;
     }
 
-    this.navCtrl.navigateForward('');
+    this.ingressarPageService.validarCodigoEscolarParaIngresso(value).subscribe(resposta => {
+      console.log(resposta, 'resposta');
+      // if (resposta && resposta.length === 0) {
+      //   this.requestsService.presentToastTop('Dados de acesso inválidos');
+      //   return;
+      // }
+      // else if (resposta && resposta.length > 0) {
+      //   this.requestsService.dadosUsuarioLogado = resposta[0];
+      //     this.navCtrl.navigateRoot('');
+      // }
+    });
+
+    // this.navCtrl.navigateForward('');
     this.requestsService.usuarioIngressadoEmEscolar = true;
   }
 

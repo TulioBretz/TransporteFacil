@@ -45,6 +45,10 @@ const routes: Routes = [
   {
     path: 'ingressar-page',
     loadChildren: () => import('./pages/aluno-ingressar/ingressar-page/ingressar-page.module').then( m => m.IngressarPagePageModule)
+  },
+  {
+    path: 'dados-usuario',
+    loadChildren: () => import('./pages/perfil/dados-usuario/dados-usuario.module').then( m => m.DadosUsuarioPageModule)
   }
 ];
 @NgModule({

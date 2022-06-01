@@ -1,25 +1,26 @@
+import { RequestsService } from 'src/app/compartilhado/services/requests.service';
 import { NavController } from '@ionic/angular';
 import { FormBuilder } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tab-perfil',
   templateUrl: 'tab-perfil.page.html',
   styleUrls: ['tab-perfil.page.scss']
 })
-export class TabPerfilPage {
+export class TabPerfilPage implements OnInit {
 
-  cadastroForm = this.fb.group({
-    nomeCompleto: [''],
-    cpf: [''],
-    email: [''],
-    confirmarEmail: [''],
-    telefone: ['']
-  });
 
-  constructor(private fb: FormBuilder, private navCtrl: NavController) {}
+  constructor(private fb: FormBuilder, private navCtrl: NavController, private requestsService: RequestsService) { }
+
+  ngOnInit(): void {
+  }
 
   onSair() {
     this.navCtrl.navigateRoot('login-page');
+  }
+
+  onMeusDadosClick() {
+    this.navCtrl.navigateForward('dados-usuario');
   }
 }

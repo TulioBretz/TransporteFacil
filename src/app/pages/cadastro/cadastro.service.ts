@@ -26,6 +26,8 @@ export class CadastroService {
             data.dadosUsuario = { ...this.dadosProvisoriosUsuarioForm };
             data.dadosMotorista = { ...this.dadosProvisoriosMotoristaForm };
 
+            //TODO: Provisório
+            data.dadosUsuario.codigoEscolar = this.dadosProvisoriosMotoristaForm.codigo;
             console.log(data, 'data');
 
             // const teste = {teste: 'teste'};
@@ -42,7 +44,7 @@ export class CadastroService {
             console.log(data, 'data');
 
             // const teste = {teste: 'teste'};
-            return this.http.post<any>(this.requestsService.serverRoute + '/api/usuarios/alunos', data, this.requestsService.httpOptions)
+            return this.http.post<any>(this.requestsService.serverRoute + '/api/usuarios/aluno', data, this.requestsService.httpOptions)
                 .pipe(
                     catchError(this.requestsService.handleError<any>('inserir gasto'))
                 );

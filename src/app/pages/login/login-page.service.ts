@@ -12,7 +12,7 @@ export class LoginPageService {
 
     //TODO: Criar modelo de rotorno para o login
     efetuarLogin(cpf: string, senha: string): Observable<any> {
-        return this.http.get<any>(this.requestsService.serverRoute + '/api/login/' + cpf + '/' + senha)
+        return this.http.get<any>(this.requestsService.serverRoute + '/api/usuarios/login/' + cpf + '/' + senha)
             .pipe(
                 catchError(this.requestsService.handleError<any>('efetuar login'))
             );

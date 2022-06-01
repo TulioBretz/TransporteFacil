@@ -1,0 +1,29 @@
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center ion-margin-top mt-5">
+    <ion-label class="titulo">Meu código</ion-label>
+  </div>
+
+  <div class="ion-text-center mt-6 ion-margin">
+  
+    <div class="mt-4">
+      <label class="confortaa">
+        Estes são o seu <strong>código</strong> e <strong>QrCode</strong> para que os alunos possam ingressar no seu
+        escolar.
+      </label>
+    </div>
+
+    <div class="mt-4">
+      <label class="confortaa">
+        <strong>{{codigoMotorista}}</strong>
+      </label>
+    </div>
+
+    <div class="mt-3">
+      <ion-card>
+        <ion-card-content>
+          <img title="qrCode" [src]="qrCodeGerado" />
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

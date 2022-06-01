@@ -1,3 +1,4 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginPageService } from './login-page.service';
 import { BrMaskerModule } from 'br-mask';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ import { LoginPagePage } from './login-page.page';
     FormsModule,
     IonicModule,
     BrMaskerModule,
+    FontAwesomeModule,
     ReactiveFormsModule,
     LoginPagePageRoutingModule,
   ],
