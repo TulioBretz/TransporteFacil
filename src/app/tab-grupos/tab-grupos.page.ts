@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabGruposPage implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

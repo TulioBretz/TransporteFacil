@@ -4,5 +4,5 @@ import { Usuario } from './Usuario';
 export class Motorista extends Usuario {
     dadosVeiculo = new Veiculo();
     localizacao: null;
-    codigo: string;
+    // codigo: string;
 }

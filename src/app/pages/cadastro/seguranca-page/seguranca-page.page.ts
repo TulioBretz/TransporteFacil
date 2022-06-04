@@ -26,8 +26,10 @@ export class SegurancaPagePage implements OnInit {
     private route: ActivatedRoute, private router: Router, private cadastroService: CadastroService) {
 
     this.route.queryParams.subscribe(() => {
-      const navParams = this.router.getCurrentNavigation().extras.state;
-      this.cadastroTipoText = navParams.tipoCadastro;
+      if (this.router.getCurrentNavigation().extras?.state) {
+        const navParams = this.router.getCurrentNavigation().extras.state;
+        this.cadastroTipoText = navParams.tipoCadastro;
+      }
     });
   }
 
@@ -110,6 +112,6 @@ export class SegurancaPagePage implements OnInit {
     }
     this.codigoGerado = novoCodigoRandomico;
 
-    this.cadastroService.dadosProvisoriosMotoristaForm.codigo = this.codigoGerado;
+    this.cadastroService.dadosProvisoriosUsuarioForm.codigoMotorista = this.codigoGerado;
   }
 }

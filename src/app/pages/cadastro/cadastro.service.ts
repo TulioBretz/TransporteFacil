@@ -27,7 +27,7 @@ export class CadastroService {
             data.dadosMotorista = { ...this.dadosProvisoriosMotoristaForm };
 
             //TODO: Provisório
-            data.dadosUsuario.codigoEscolar = this.dadosProvisoriosMotoristaForm.codigo;
+            data.dadosUsuario.codigoMotorista = this.dadosProvisoriosUsuarioForm.codigoMotorista;
             console.log(data, 'data');
 
             // const teste = {teste: 'teste'};

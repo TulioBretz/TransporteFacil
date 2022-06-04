@@ -27,18 +27,16 @@ export class IngressarPagePage implements OnInit {
 
     this.ingressarPageService.validarCodigoEscolarParaIngresso(value).subscribe(resposta => {
       console.log(resposta, 'resposta');
-      // if (resposta && resposta.length === 0) {
-      //   this.requestsService.presentToastTop('Dados de acesso inválidos');
-      //   return;
-      // }
-      // else if (resposta && resposta.length > 0) {
-      //   this.requestsService.dadosUsuarioLogado = resposta[0];
-      //     this.navCtrl.navigateRoot('');
-      // }
+      if (resposta && resposta.length === 0) {
+        this.requestsService.presentToastTop('Falha ao ingressar no escolar. Favor tentar novamente.');
+        return;
+      }
+      else if (resposta && resposta.length > 0) {
+        this.requestsService.presentToastTop('Usuário ingressado no escolar com sucesso!');
+        this.requestsService.dadosUsuarioLogado.codigoEscolar = resposta[0].codigo;
+        this.navCtrl.navigateRoot('tabs/tab-aluno-escolar');
+      }
     });
-
-    // this.navCtrl.navigateForward('');
-    this.requestsService.usuarioIngressadoEmEscolar = true;
   }
 
 }

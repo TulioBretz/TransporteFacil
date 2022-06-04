@@ -16,10 +16,25 @@ export class RequestsService {
     };
 
     dadosUsuarioLogado: Usuario = new Usuario();
-    tipoUsuarioLogado = TipoUsuarioEnum.aluno;
-    usuarioIngressadoEmEscolar = false;
+    primeiroAcesso = true;
 
     constructor(private toastController: ToastController, private alertController: AlertController) {
+    }
+
+    usuarioIngressadoEmEscolar(): boolean {
+        return this.dadosUsuarioLogado.codigoEscolar !== '' && this.dadosUsuarioLogado.codigoEscolar !== null;
+    }
+
+    tipoUsuarioLogado(): TipoUsuarioEnum {
+        if (this.dadosUsuarioLogado.codigoMotorista !== '' && this.dadosUsuarioLogado.codigoMotorista !== null) {
+            return TipoUsuarioEnum.motorista;
+        } else {
+            return TipoUsuarioEnum.aluno;
+        }
+    }
+
+    usuarioLogado(): boolean {
+        return this.dadosUsuarioLogado.id !== '' && this.dadosUsuarioLogado.id !== null;
     }
 
     async presentToastTop(msg: string) {

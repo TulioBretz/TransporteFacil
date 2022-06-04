@@ -24,7 +24,7 @@ export class CadastroRealizadoPagePage implements OnInit {
       return;
     }
 
-    this.codigoGerado = this.cadastroService.dadosProvisoriosMotoristaForm.codigo;
+    this.codigoGerado = this.cadastroService.dadosProvisoriosUsuarioForm.codigoMotorista;
 
     const qrcode = QRCode;
     const self = this;
@@ -43,7 +43,7 @@ export class CadastroRealizadoPagePage implements OnInit {
   }
 
   validarCodigoGerado(): boolean {
-    if (!this.cadastroService.dadosProvisoriosMotoristaForm.codigo) {
+    if (!this.cadastroService.dadosProvisoriosUsuarioForm.codigoMotorista) {
       return false;
     }
 

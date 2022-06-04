@@ -15,12 +15,10 @@ export class TipoUsuarioPagePage implements OnInit {
   }
 
   onSouMotorista() {
-    this.cadastroService.dadosProvisoriosUsuarioForm.isMotorista = true;
     this.navCtrl.navigateForward('cadastro-motorista-dados-veiculo-page');
   }
 
   onSouAluno() {
-    this.cadastroService.dadosProvisoriosUsuarioForm.isMotorista = false;
     this.navCtrl.navigateForward('cadastro-aluno-dados-instituicao-page');
   }
 

@@ -6,6 +6,7 @@ import { NavController, AlertController } from '@ionic/angular';
 import { RequestsService } from 'src/app/compartilhado/services/requests.service';
 import { CadastroService } from '../cadastro/cadastro.service';
 import { GlobalService } from 'src/app/compartilhado/services/global.service';
+import { TipoUsuarioEnum } from 'src/app/compartilhado/enums/tipo-usuario-enum';
 
 @Component({
   selector: 'app-login-page',
@@ -38,14 +39,14 @@ export class LoginPagePage implements OnInit {
     }
 
     this.loginService.efetuarLogin(this.cadastroForm.get('cpf').value, this.cadastroForm.get('senha').value).subscribe(resposta => {
-      console.log(resposta, 'resposta');
       if (resposta && resposta.length === 0) {
         this.requestsService.presentToastTop('Dados de acesso inválidos');
         return;
       }
       else if (resposta && resposta.length > 0) {
         this.requestsService.dadosUsuarioLogado = resposta[0];
-          this.navCtrl.navigateRoot('');
+        this.requestsService.primeiroAcesso = true;
+        this.navCtrl.navigateRoot('');
       }
     });
   }

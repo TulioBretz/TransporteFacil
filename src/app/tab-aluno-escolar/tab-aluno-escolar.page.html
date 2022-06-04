@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true" *ngIf="!requestsService.usuarioIngressadoEmEscolar">
+<ion-content [fullscreen]="true" *ngIf="!requestsService.usuarioIngressadoEmEscolar()">
   <div class="ion-text-center ion-margin-top mt-5">
     <ion-label class="titulo">Início</ion-label>
   </div>
@@ -12,7 +12,7 @@
 
     <div class="mt-6 ion-text-center ion-margin">
       <label class="confortaa">
-        Clique no botão abaixo para ingressar com o <strong>código</strong> ou <strong>QrCode</strong> forncedio pelo
+        Clique no botão abaixo para ingressar com o <strong>código</strong> ou <strong>QrCode</strong> fornecido pelo
         <strong>motorista</strong>
       </label>
     </div>
@@ -23,7 +23,7 @@
   </div>
 </ion-content>
 
-<ion-content [fullscreen]="true" *ngIf="requestsService.usuarioIngressadoEmEscolar">
+<ion-content [fullscreen]="true" *ngIf="requestsService.usuarioIngressadoEmEscolar()">
   <div class="ion-text-center ion-margin-top mt-5">
     <ion-label class="titulo">Meu escolar</ion-label>
   </div>
