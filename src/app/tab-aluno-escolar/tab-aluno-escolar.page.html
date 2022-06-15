@@ -35,14 +35,14 @@
   <ion-list class="mt-2">
     <ion-list-header class="confortaa"><strong>Motorista</strong></ion-list-header>
 
-    <ion-item lines="none">
+    <ion-item lines="none" *ngIf="dadosMotorista && dadosVeiculo">
       <ion-avatar slot="start">
         <img src="./avatar-finn.png" title="Imagem motorista" />
       </ion-avatar>
       <ion-label>
-        <h2><strong>Leonardo de Souza</strong></h2>
-        <h3>Placa: HFG-8541</h3>
-        <p>Van - Azul</p>
+        <h2><strong>{{dadosMotorista.nome}}</strong></h2>
+        <h3>{{dadosVeiculo.placa}}</h3>
+        <p>{{dadosVeiculo.tipoVeiculo}}</p>
       </ion-label>
     </ion-item>
 

@@ -9,7 +9,7 @@ import QRCode from 'qrcode';
 })
 export class TabMotoristaCodigoPage implements OnInit {
 
-  codigoMotorista = 'aBgf78R&e';
+  codigoMotorista = this.requestsService.dadosUsuarioLogado.codigoMotorista;
   qrCodeGerado = '';
 
   constructor(private requestsService: RequestsService) { }

@@ -1,15 +1,16 @@
 import { Usuario } from './../models/Usuario';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Observable, of } from 'rxjs';
 import { TipoUsuarioEnum } from '../enums/tipo-usuario-enum';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class RequestsService {
 
-    serverRoute = 'http://localhost:3000';
-    //serverRoute = 'https://transportefacil-api.herokuapp.com';
+    //serverRoute = 'http://localhost:3000';
+    serverRoute = 'https://transportefacil-api.herokuapp.com';
     httpOptions = {
         // eslint-disable-next-line @typescript-eslint/naming-convention
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,7 +19,7 @@ export class RequestsService {
     dadosUsuarioLogado: Usuario = new Usuario();
     primeiroAcesso = true;
 
-    constructor(private toastController: ToastController, private alertController: AlertController) {
+    constructor(private toastController: ToastController, private alertController: AlertController, private http: HttpClient) {
     }
 
     usuarioIngressadoEmEscolar(): boolean {
@@ -85,4 +86,13 @@ export class RequestsService {
             return of(result as T);
         };
     }
+
+    //#region Requisições Globais
+    obterDadosMotorista(codigoMotorista: string) {
+        return this.http.get<any>(this.serverRoute + '/api/motoristas/motorista/' + codigoMotorista)
+            .pipe(
+                catchError(this.handleError<any>('obter dados do motorista'))
+            );
+    }
+    //#endregion
 }
