@@ -54,15 +54,15 @@ export class SegurancaPagePage implements OnInit {
     this.cadastroForm.get('confirmarSenha').setValidators(Validators.required);
     this.cadastroForm.get('confirmarSenha').updateValueAndValidity();
 
-    // if (!this.cadastroForm.valid) {
-    //   this.valitationText = ErrorMessageEnum.camposObrigatorios;
-    //   return;
-    // }
+    if (!this.cadastroForm.valid) {
+      this.valitationText = ErrorMessageEnum.camposObrigatorios;
+      return;
+    }
 
-    // if (this.cadastroForm.get('senha').value !== this.cadastroForm.get('confirmarSenha').value) {
-    //   this.valitationText = ErrorMessageEnum.senhaDivergente;
-    //   return;
-    // }
+    if (this.cadastroForm.get('senha').value !== this.cadastroForm.get('confirmarSenha').value) {
+      this.valitationText = ErrorMessageEnum.senhaDivergente;
+      return;
+    }
 
     // Caso esteja exibindo alguma mensagem de validação, não deixa prosseguir
     if (this.valitationText) {

@@ -14,14 +14,14 @@ import { Guid } from 'guid-typescript';
 export class EnderecoPagePage implements OnInit {
 
   cadastroForm = this.fb.group({
-    cep: ['32110340'],
-    rua: ['Moscou'],
-    bairro: ['Parque Recreio'],
-    numero: ['440'],
-    cidade: ['Contagem'],
+    cep: [''],
+    rua: [''],
+    bairro: [''],
+    numero: [''],
+    cidade: [''],
     apartamento: [''],
     bloco: [''],
-    uf: ['MG']
+    uf: ['']
   });
 
   valitationText = '';
@@ -48,19 +48,13 @@ export class EnderecoPagePage implements OnInit {
     this.cadastroForm.get('cidade').setValidators(Validators.required);
     this.cadastroForm.get('cidade').updateValueAndValidity();
 
-    this.cadastroForm.get('apartamento').setValidators(Validators.required);
-    this.cadastroForm.get('apartamento').updateValueAndValidity();
-
-    this.cadastroForm.get('bloco').setValidators(Validators.required);
-    this.cadastroForm.get('bloco').updateValueAndValidity();
-
     this.cadastroForm.get('uf').setValidators(Validators.required);
     this.cadastroForm.get('uf').updateValueAndValidity();
 
-    // if (!this.cadastroForm.valid) {
-    //   this.valitationText = ErrorMessageEnum.camposObrigatorios;
-    //   return;
-    // }
+    if (!this.cadastroForm.valid) {
+      this.valitationText = ErrorMessageEnum.camposObrigatorios;
+      return;
+    }
 
     this.cadastroService.dadosProvisoriosUsuarioForm.cep = this.cadastroForm.get('cep').value;
     this.cadastroService.dadosProvisoriosUsuarioForm.rua = this.cadastroForm.get('rua').value;

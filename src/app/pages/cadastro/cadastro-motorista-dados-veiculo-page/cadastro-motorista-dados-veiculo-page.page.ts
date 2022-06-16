@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { NavigationExtras } from '@angular/router';
+import { ErrorMessageEnum } from 'src/app/compartilhado/enums/error-message-enum';
 
 @Component({
   selector: 'app-cadastro-motorista-dados-veiculo-page',
@@ -13,10 +14,12 @@ import { NavigationExtras } from '@angular/router';
 export class CadastroMotoristaDadosVeiculoPagePage implements OnInit {
 
   cadastroForm = this.fb.group({
-    placa: ['ABC4848',],
-    cor: ['17'],
-    tipo: ['3'],
+    placa: ['',],
+    cor: [''],
+    tipo: [''],
   });
+
+  valitationText = '';
 
   constructor(private fb: FormBuilder, private navCtrl: NavController, public globalService: GlobalService,
     private cadastroService: CadastroService) { }
@@ -34,15 +37,10 @@ export class CadastroMotoristaDadosVeiculoPagePage implements OnInit {
     this.cadastroForm.get('tipo').setValidators(Validators.required);
     this.cadastroForm.get('tipo').updateValueAndValidity();
 
-    // if (!this.cadastroForm.valid) {
-    //   this.valitationText = ErrorMessageEnum.camposObrigatorios;
-    //   return;
-    // }
-
-    // if (this.cadastroForm.get('email').value !== this.cadastroForm.get('confirmarEmail').value) {
-    //   this.valitationText = ErrorMessageEnum.emailDivergente;
-    //   return;
-    // }
+    if (!this.cadastroForm.valid) {
+      this.valitationText = ErrorMessageEnum.camposObrigatorios;
+      return;
+    }
 
     this.cadastroService.dadosProvisoriosMotoristaForm.dadosVeiculo.placa = this.cadastroForm.get('placa').value;
     this.cadastroService.dadosProvisoriosMotoristaForm.dadosVeiculo.cor = this.cadastroForm.get('cor').value;

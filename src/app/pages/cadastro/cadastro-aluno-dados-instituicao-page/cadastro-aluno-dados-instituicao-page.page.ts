@@ -14,10 +14,10 @@ import { NavigationExtras } from '@angular/router';
 export class CadastroAlunoDadosInstituicaoPagePage implements OnInit {
 
   cadastroForm = this.fb.group({
-    intituicaoNome: ['Puc Minas'],
-    turno: ['1'],
-    horarioDe: ['07:00'],
-    horarioAte: ['12:20']
+    intituicaoNome: [],
+    turno: [],
+    horarioDe: [],
+    horarioAte: []
   });
 
   horarioDeValido = true;
@@ -74,20 +74,20 @@ export class CadastroAlunoDadosInstituicaoPagePage implements OnInit {
     this.cadastroForm.get('turno').setValidators(Validators.required);
     this.cadastroForm.get('turno').updateValueAndValidity();
 
-    // if (!this.cadastroForm.valid) {
-    //   this.valitationText = ErrorMessageEnum.camposObrigatorios;
-    //   return;
-    // }
+    if (!this.cadastroForm.valid) {
+      this.valitationText = ErrorMessageEnum.camposObrigatorios;
+      return;
+    }
 
-    // if (!this.horarioDeValido || !this.horarioAteValido || !this.cadastroForm.get('horarioDe').value || !this.cadastroForm.get('horarioAte').value) {
-    //   this.valitationText = ErrorMessageEnum.horariosPreenchimentoIncorreto;
-    //   return;
-    // }
+    if (!this.horarioDeValido || !this.horarioAteValido || !this.cadastroForm.get('horarioDe').value || !this.cadastroForm.get('horarioAte').value) {
+      this.valitationText = ErrorMessageEnum.horariosPreenchimentoIncorreto;
+      return;
+    }
 
-    // if (!this.validarHorarioMaiorQueAnterior(this.cadastroForm.get('horarioDe').value, this.cadastroForm.get('horarioAte').value)) {
-    //   this.valitationText = ErrorMessageEnum.horariosFinalMaiorQueFinal;
-    //   return;
-    // }
+    if (!this.validarHorarioMaiorQueAnterior(this.cadastroForm.get('horarioDe').value, this.cadastroForm.get('horarioAte').value)) {
+      this.valitationText = ErrorMessageEnum.horariosFinalMaiorQueFinal;
+      return;
+    }
 
     const navigationExtras: NavigationExtras = {
       state: {

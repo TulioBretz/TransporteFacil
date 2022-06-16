@@ -1,5 +1,7 @@
 {
   "name": "TransporteFacil",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

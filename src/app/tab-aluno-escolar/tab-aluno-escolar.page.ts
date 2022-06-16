@@ -37,7 +37,6 @@ export class TabAlunoEscolarPage extends SimularLifecycle implements OnInit {
 
   ngOnInit(): void {
     this.requestsService.obterDadosMotorista(this.requestsService.dadosUsuarioLogado.codigoEscolar).subscribe((resposta: any) => {
-      console.log(resposta, 'resposta');
       if (resposta && resposta.length === 0) {
         this.requestsService.presentToastTop('Falha ao obter dados do motorista.');
         return;

@@ -14,11 +14,11 @@ import { Guid } from 'guid-typescript';
 export class DadosPessoaisPagePage implements OnInit {
 
   cadastroForm = this.fb.group({
-    nomeCompleto: ['Túlio Bretz Gomes Dias'],
-    cpf: ['112.486.516-00'],
-    email: ['teste@teste.com'],
-    confirmarEmail: ['teste@teste.com'],
-    telefone: ['31994856468']
+    nomeCompleto: [''],
+    cpf: [''],
+    email: [''],
+    confirmarEmail: [''],
+    telefone: ['']
   });
 
   valitationText = '';
@@ -44,15 +44,15 @@ export class DadosPessoaisPagePage implements OnInit {
     this.cadastroForm.get('telefone').setValidators(Validators.required);
     this.cadastroForm.get('telefone').updateValueAndValidity();
 
-    // if (!this.cadastroForm.valid) {
-    //   this.valitationText = ErrorMessageEnum.camposObrigatorios;
-    //   return;
-    // }
+    if (!this.cadastroForm.valid) {
+      this.valitationText = ErrorMessageEnum.camposObrigatorios;
+      return;
+    }
 
-    // if (this.cadastroForm.get('email').value !== this.cadastroForm.get('confirmarEmail').value) {
-    //   this.valitationText = ErrorMessageEnum.emailDivergente;
-    //   return;
-    // }
+    if (this.cadastroForm.get('email').value !== this.cadastroForm.get('confirmarEmail').value) {
+      this.valitationText = ErrorMessageEnum.emailDivergente;
+      return;
+    }
 
     this.cadastroService.dadosProvisoriosUsuarioForm.id = Guid.create().toString();
     this.cadastroService.dadosProvisoriosUsuarioForm.nome = this.cadastroForm.get('nomeCompleto').value;
