@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Alterar senha</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="alterarSenhaForm">
+
+    <div class="input-div">
+      <ion-label position="stacked">Senha atual</ion-label>
+      <ion-input class="input" type="password" formControlName="senha" minlength="8" maxlength="50"
+      (change)="onSenhaChange()"></ion-input>
+    </div>
+
+    <div class="ion-text-center ion-margin">
+      <span class="information-span">
+        A senha deve conter no mínimo 8 dígitos com: letras, números e caracteres especiais.
+      </span>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Nova senha</ion-label>
+      <ion-input class="input" type="password" formControlName="novaSenha" minlength="8" maxlength="50"
+      (change)="onSenhaChange()"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Confirmar senha</ion-label>
+      <ion-input class="input" type="password" formControlName="confirmarNovaSenha" minlength="8" maxlength="50">
+      </ion-input>
+    </div>
+  </form>
+
+  <div class="div-btn">
+    <div class="ion-text-center">
+      <span class="validator-span">{{validationText}}</span>
+    </div>
+    <button class="btn btn-verde" (click)="onSalvar()">Salvar</button>
+  </div>
+
+</ion-content>

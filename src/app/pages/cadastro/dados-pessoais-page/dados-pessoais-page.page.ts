@@ -21,7 +21,7 @@ export class DadosPessoaisPagePage implements OnInit {
     telefone: ['']
   });
 
-  valitationText = '';
+  validationText = '';
 
   constructor(private navCtrl: NavController, private fb: FormBuilder, private cadastroService: CadastroService) { }
 
@@ -45,12 +45,12 @@ export class DadosPessoaisPagePage implements OnInit {
     this.cadastroForm.get('telefone').updateValueAndValidity();
 
     if (!this.cadastroForm.valid) {
-      this.valitationText = ErrorMessageEnum.camposObrigatorios;
+      this.validationText = ErrorMessageEnum.camposObrigatorios;
       return;
     }
 
     if (this.cadastroForm.get('email').value !== this.cadastroForm.get('confirmarEmail').value) {
-      this.valitationText = ErrorMessageEnum.emailDivergente;
+      this.validationText = ErrorMessageEnum.emailDivergente;
       return;
     }
 

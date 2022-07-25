@@ -24,7 +24,7 @@ export class EnderecoPagePage implements OnInit {
     uf: ['']
   });
 
-  valitationText = '';
+  validationText = '';
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public globalService: GlobalService,
     private cadastroService: CadastroService) { }
@@ -52,7 +52,7 @@ export class EnderecoPagePage implements OnInit {
     this.cadastroForm.get('uf').updateValueAndValidity();
 
     if (!this.cadastroForm.valid) {
-      this.valitationText = ErrorMessageEnum.camposObrigatorios;
+      this.validationText = ErrorMessageEnum.camposObrigatorios;
       return;
     }
 

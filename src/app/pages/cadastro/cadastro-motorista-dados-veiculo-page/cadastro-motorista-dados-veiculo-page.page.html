@@ -25,7 +25,7 @@
       <ion-label>Cor</ion-label>
       <ion-select formControlName="cor" interface="popover">
         <ng-template ngFor let-item [ngForOf]="globalService.corVeiculoList" let-i="index">
-          <ion-select-option value="{{item.codigo}}">{{item.descricao}}</ion-select-option>
+          <ion-select-option value="{{item.descricao}}">{{item.descricao}}</ion-select-option>
         </ng-template>
       </ion-select>
     </ion-item>
@@ -42,7 +42,7 @@
 
   <div class="div-btn">
     <div class="ion-text-center">
-      <span class="validator-span">{{valitationText}}</span>
+      <span class="validator-span">{{validationText}}</span>
     </div>
     <button class="btn btn-preto" (click)="onAvancar()">Avançar</button>
   </div>

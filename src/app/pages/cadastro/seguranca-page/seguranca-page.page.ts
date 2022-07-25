@@ -1,3 +1,4 @@
+import { RequestsService } from './../../../compartilhado/services/requests.service';
 import { CadastroService } from './../cadastro.service';
 import { GlobalService } from 'src/app/compartilhado/services/global.service';
 import { NavController } from '@ionic/angular';
@@ -19,7 +20,7 @@ export class SegurancaPagePage implements OnInit {
   });
 
   cadastroTipoText = '';
-  valitationText = '';
+  validationText = '';
   codigoGerado = '';
 
   constructor(private fb: FormBuilder, private navCtrl: NavController, private globalService: GlobalService,
@@ -39,11 +40,11 @@ export class SegurancaPagePage implements OnInit {
 
   onSenhaChange() {
     if (!this.globalService.validarFormatoDeSenha(this.cadastroForm.get('senha').value)) {
-      this.valitationText = ErrorMessageEnum.senhaFormatoIncorreto;
+      this.validationText = ErrorMessageEnum.senhaFormatoIncorreto;
       return;
     }
     else {
-      this.valitationText = '';
+      this.validationText = '';
     }
   }
 
@@ -55,17 +56,17 @@ export class SegurancaPagePage implements OnInit {
     this.cadastroForm.get('confirmarSenha').updateValueAndValidity();
 
     if (!this.cadastroForm.valid) {
-      this.valitationText = ErrorMessageEnum.camposObrigatorios;
+      this.validationText = ErrorMessageEnum.camposObrigatorios;
       return;
     }
 
     if (this.cadastroForm.get('senha').value !== this.cadastroForm.get('confirmarSenha').value) {
-      this.valitationText = ErrorMessageEnum.senhaDivergente;
+      this.validationText = ErrorMessageEnum.senhaDivergente;
       return;
     }
 
     // Caso esteja exibindo alguma mensagem de validação, não deixa prosseguir
-    if (this.valitationText) {
+    if (this.validationText) {
       return false;
     }
 
@@ -106,11 +107,13 @@ export class SegurancaPagePage implements OnInit {
 
   gerarCodigoMotorista() {
     let novoCodigoRandomico = '';
-    const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvxw123456789!@#$%^?';
-    for (let i = 0; i < 10; i++) {
+    const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvxw123456789)(';
+
+    for (let i = 0; i < 6; i++) {
       novoCodigoRandomico += characters.charAt(Math.floor(Math.random() * characters.length));
     }
-    this.codigoGerado = novoCodigoRandomico;
+
+    this.codigoGerado =  this.cadastroService.dadosProvisoriosMotoristaForm.dadosVeiculo.placa + novoCodigoRandomico;
 
     this.cadastroService.dadosProvisoriosUsuarioForm.codigoMotorista = this.codigoGerado;
   }

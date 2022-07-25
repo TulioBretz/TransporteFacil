@@ -22,7 +22,7 @@ export class CadastroAlunoDadosInstituicaoPagePage implements OnInit {
 
   horarioDeValido = true;
   horarioAteValido = true;
-  valitationText = '';
+  validationText = '';
 
   constructor(private fb: FormBuilder, public globalService: GlobalService, private navCtrl: NavController) { }
 
@@ -75,17 +75,17 @@ export class CadastroAlunoDadosInstituicaoPagePage implements OnInit {
     this.cadastroForm.get('turno').updateValueAndValidity();
 
     if (!this.cadastroForm.valid) {
-      this.valitationText = ErrorMessageEnum.camposObrigatorios;
+      this.validationText = ErrorMessageEnum.camposObrigatorios;
       return;
     }
 
     if (!this.horarioDeValido || !this.horarioAteValido || !this.cadastroForm.get('horarioDe').value || !this.cadastroForm.get('horarioAte').value) {
-      this.valitationText = ErrorMessageEnum.horariosPreenchimentoIncorreto;
+      this.validationText = ErrorMessageEnum.horariosPreenchimentoIncorreto;
       return;
     }
 
     if (!this.validarHorarioMaiorQueAnterior(this.cadastroForm.get('horarioDe').value, this.cadastroForm.get('horarioAte').value)) {
-      this.valitationText = ErrorMessageEnum.horariosFinalMaiorQueFinal;
+      this.validationText = ErrorMessageEnum.horariosFinalMaiorQueFinal;
       return;
     }
 

@@ -1,3 +1,7 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable max-len */
+import { AlterarDadosUsuarioModel } from './../models/alterar-dados-usuario-model';
+import { PerfilService } from './../perfil.service';
 import { RequestsService } from './../../../compartilhado/services/requests.service';
 import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +23,7 @@ export class DadosUsuarioPage implements OnInit {
 
   modoEdicao = false;
 
-  constructor(private fb: FormBuilder, private requestsService: RequestsService) {
+  constructor(private fb: FormBuilder, private requestsService: RequestsService, private perfilService: PerfilService) {
     this.cadastroForm.patchValue(this.requestsService.dadosUsuarioLogado);
   }
 
@@ -47,5 +51,31 @@ export class DadosUsuarioPage implements OnInit {
     this.cadastroForm.get('email').disable();
     this.cadastroForm.get('telefone').disable();
     this.cadastroForm.get('confirmarEmail').setValue('');
+  }
+
+  onSalvar() {
+
+    if (this.cadastroForm.get('confirmarEmail').value && this.cadastroForm.get('email').value !== this.cadastroForm.get('confirmarEmail').value) {
+      this.requestsService.presentToastTop('Email de confirmação divergente do informado.');
+      return;
+    }
+
+    const dadosUsuarioAlterados = new AlterarDadosUsuarioModel();
+
+    dadosUsuarioAlterados.id = this.requestsService.dadosUsuarioLogado.id;
+    dadosUsuarioAlterados.nome = this.cadastroForm.get('nome').value;
+    dadosUsuarioAlterados.email = this.cadastroForm.get('email').value;
+    dadosUsuarioAlterados.telefone = this.cadastroForm.get('telefone').value;
+
+    this.perfilService.salvarDadosUsuario(dadosUsuarioAlterados).subscribe((resposta: any) => {
+      if (resposta) {
+        this.requestsService.presentToastPositivoTop('Dados do usuário alterados com sucesso.');
+        this.onEditar();
+      }
+
+      this.requestsService.dadosUsuarioLogado.nome = this.cadastroForm.get('nome').value;
+      this.requestsService.dadosUsuarioLogado.email = this.cadastroForm.get('email').value;
+      this.requestsService.dadosUsuarioLogado.telefone = this.cadastroForm.get('telefone').value;
+    });
   }
 }

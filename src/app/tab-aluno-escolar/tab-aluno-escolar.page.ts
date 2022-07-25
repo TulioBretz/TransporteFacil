@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { TipoVeiculoEnum } from './../compartilhado/enums/tipo-veiculo-enum';
 import { Usuario } from './../compartilhado/models/Usuario';
 import { Motorista } from './../compartilhado/models/Motorista';
@@ -6,7 +7,7 @@ import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { TipoUsuarioEnum } from '../compartilhado/enums/tipo-usuario-enum';
 import { SimularLifecycle } from '../compartilhado/components/simular-lifecycle.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab-aluno-escolar',
@@ -18,6 +19,7 @@ export class TabAlunoEscolarPage extends SimularLifecycle implements OnInit {
 
   dadosMotorista: any;
   dadosVeiculo: any;
+  alunosIngressadosList = [];
 
   constructor(private navCtrl: NavController, public requestsService: RequestsService,
     private route: ActivatedRoute, private router: Router) {
@@ -36,9 +38,13 @@ export class TabAlunoEscolarPage extends SimularLifecycle implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.requestsService.dadosUsuarioLogado.codigoEscolar) {
+      return;
+    }
+
     this.requestsService.obterDadosMotorista(this.requestsService.dadosUsuarioLogado.codigoEscolar).subscribe((resposta: any) => {
       if (resposta && resposta.length === 0) {
-        this.requestsService.presentToastTop('Falha ao obter dados do motorista.');
+        this.requestsService.presentToastNegativoTop('Falha ao obter dados do motorista.');
         return;
       }
 
@@ -46,7 +52,24 @@ export class TabAlunoEscolarPage extends SimularLifecycle implements OnInit {
         this.dadosMotorista = resposta.DadosMotorista[0];
         this.dadosVeiculo = resposta.DadosVeiculo[0];
         this.dadosVeiculo.tipoVeiculo = TipoVeiculoEnum[resposta.DadosVeiculo[0].tipoVeiculo];
+
+        if (this.dadosVeiculo.tipoVeiculo.length > 0) {
+          this.dadosVeiculo.tipoVeiculo = this.dadosVeiculo.tipoVeiculo[0].toUpperCase() +
+            this.dadosVeiculo.tipoVeiculo.substring(1);
+        }
+
+
       }
+    });
+
+    this.requestsService.obterListaAlunosIngressadosPorCodigo(this.requestsService.dadosUsuarioLogado.codigoEscolar).subscribe((resposta: any) => {
+      if (resposta && resposta.length === 0) {
+        this.requestsService.presentToastNegativoTop('Falha ao obter alunos ingressados no escolar.');
+        return;
+      }
+
+      console.log(resposta, 'resposta');
+      this.alunosIngressadosList = resposta;
     });
   }
 
@@ -55,5 +78,17 @@ export class TabAlunoEscolarPage extends SimularLifecycle implements OnInit {
 
   onIngressar() {
     this.navCtrl.navigateForward('ingressar-page');
+  }
+
+  onMotoristaClick() {
+
+    const navigationExtras: NavigationExtras = {
+      state: {
+        dadosMotorista: this.dadosMotorista,
+        dadosVeiculo: this.dadosVeiculo
+      }
+    };
+
+    this.navCtrl.navigateForward('dados-motorista', navigationExtras);
   }
 }

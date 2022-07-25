@@ -1,3 +1,4 @@
+import { PerfilService } from './../perfil.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,12 +14,12 @@ import { BrMaskerModule } from 'br-mask';
   imports: [
     CommonModule,
     FormsModule,
-    FormsModule,
     ReactiveFormsModule,
     IonicModule,
     BrMaskerModule,
     DadosUsuarioPageRoutingModule
   ],
-  declarations: [DadosUsuarioPage]
+  declarations: [DadosUsuarioPage],
+  providers: [PerfilService]
 })
 export class DadosUsuarioPageModule {}

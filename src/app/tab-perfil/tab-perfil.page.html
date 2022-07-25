@@ -10,17 +10,17 @@
       <ion-label>Dados pessoais</ion-label>
     </ion-item>
 
-    <ion-item (click)="onMeusDadosClick()">
+    <ion-item (click)="onDadosEnderecoClick()">
       <fa-icon icon="house" slot="start"></fa-icon>
       <ion-label>Endereço</ion-label>
     </ion-item>
 
-    <ion-item>
+    <ion-item (click)="onDadosVeiculo()" *ngIf="requestsService.dadosUsuarioLogado.codigoMotorista">
       <fa-icon icon="van-shuttle" slot="start"></fa-icon>
       <ion-label>Dados do veículo</ion-label>
     </ion-item>
 
-    <ion-item>
+    <ion-item (click)="onAlterarSenha()">
       <fa-icon icon="key" slot="start"></fa-icon>
       <ion-label>Alterar senha</ion-label>
     </ion-item>

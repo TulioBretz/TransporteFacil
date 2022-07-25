@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Dados do aluno</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item lines="none" *ngIf="dadosAluno" (click)="onMotoristaClick()" class="mt-3">
+    <ion-avatar slot="start">
+      <img src="./avatar-finn.png" title="Imagem aluno" />
+    </ion-avatar>
+    <ion-label>
+      <h2><strong>{{dadosAluno.nome}}</strong></h2>
+      <h3>CPF: {{dadosAluno.cpf}}</h3>
+      <h3>Telefone: {{dadosAluno.telefone}}</h3>
+      <h3>E-mail: {{dadosAluno.email}}</h3>
+      <br>
+      <h3>Rua: {{dadosAluno.rua}}</h3>
+      <h3>Bairro: {{dadosAluno.bairro}}</h3>
+      <h3>Número: {{dadosAluno.numero}}</h3>
+      <h3>Apto: {{dadosAluno.apto}}</h3>
+      <h3>Bloco: {{dadosAluno.bloco}}</h3>
+
+      TODO
+      <!-- INSERIR DADOS INSTITUIÇÃO -->
+    </ion-label>
+  </ion-item>
+
+  <div class="div-btn mt-5">
+    <button class="btn btn-vermelho" (click)="onSairEscolar()">Retirar do escolar</button>
+  </div>
+</ion-content>

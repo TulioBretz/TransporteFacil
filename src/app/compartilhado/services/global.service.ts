@@ -39,23 +39,23 @@ export class GlobalService {
         { descricao: 'Não Especificado', codigo: 5 }];
 
     corVeiculoList = [
-        { descricao: 'Amarelo', codigo: 1 },
-        { descricao: 'Azul', codigo: 2 },
-        { descricao: 'Bege', codigo: 3 },
-        { descricao: 'Branco', codigo: 4 },
-        { descricao: 'Bronze', codigo: 5 },
-        { descricao: 'Cinza', codigo: 6 },
-        { descricao: 'Dourado', codigo: 7 },
-        { descricao: 'Laranja', codigo: 8 },
-        { descricao: 'Marrom', codigo: 9 },
-        { descricao: 'Prata', codigo: 10 },
-        { descricao: 'Preto', codigo: 11 },
-        { descricao: 'Rosa', codigo: 12 },
-        { descricao: 'Roxo', codigo: 13 },
-        { descricao: 'Verde', codigo: 14 },
-        { descricao: 'Vermelho', codigo: 15 },
-        { descricao: 'Vinho', codigo: 16 },
-        { descricao: 'Indefinida', codigo: 17 }];
+        { descricao: 'Amarelo' },
+        { descricao: 'Azul' },
+        { descricao: 'Bege' },
+        { descricao: 'Branco' },
+        { descricao: 'Bronze' },
+        { descricao: 'Cinza' },
+        { descricao: 'Dourado', },
+        { descricao: 'Laranja' },
+        { descricao: 'Marrom' },
+        { descricao: 'Prata' },
+        { descricao: 'Preto' },
+        { descricao: 'Rosa' },
+        { descricao: 'Roxo' },
+        { descricao: 'Verde', },
+        { descricao: 'Vermelho' },
+        { descricao: 'Vinho' },
+        { descricao: 'Indefinida' }];
 
     turnoList = [
         { descricao: 'Manhã', codigo: 1 },

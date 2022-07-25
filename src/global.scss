@@ -161,3 +161,11 @@ ion-input.ng-invalid {
     position: absolute;
     width: 100%;
 }
+
+.toast-positivo {
+    --background: rgb(5, 167, 5);
+}
+
+.toast-negativo {
+    --background: rgb(218, 36, 30);
+}

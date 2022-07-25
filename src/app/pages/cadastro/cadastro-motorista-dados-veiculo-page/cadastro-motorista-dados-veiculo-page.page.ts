@@ -19,7 +19,7 @@ export class CadastroMotoristaDadosVeiculoPagePage implements OnInit {
     tipo: [''],
   });
 
-  valitationText = '';
+  validationText = '';
 
   constructor(private fb: FormBuilder, private navCtrl: NavController, public globalService: GlobalService,
     private cadastroService: CadastroService) { }
@@ -38,7 +38,7 @@ export class CadastroMotoristaDadosVeiculoPagePage implements OnInit {
     this.cadastroForm.get('tipo').updateValueAndValidity();
 
     if (!this.cadastroForm.valid) {
-      this.valitationText = ErrorMessageEnum.camposObrigatorios;
+      this.validationText = ErrorMessageEnum.camposObrigatorios;
       return;
     }
 

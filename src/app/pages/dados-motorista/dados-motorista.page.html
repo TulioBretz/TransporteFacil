@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Dados do motorista</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item lines="none" *ngIf="dadosMotorista && dadosVeiculo" (click)="onMotoristaClick()" class="mt-3">
+    <ion-avatar slot="start">
+      <img src="./avatar-finn.png" title="Imagem motorista" />
+    </ion-avatar>
+    <ion-label >
+      <h2><strong>{{dadosMotorista.nome}}</strong></h2>
+      <h3>CPF: {{dadosMotorista.cpf}}</h3>
+      <h3>Placa: {{dadosVeiculo.placa}}</h3>
+      <h3>Tipo: {{dadosVeiculo.tipoVeiculo}}, {{dadosVeiculo.cor}}</h3>
+      <h3>Telefone: {{dadosMotorista.telefone}}</h3>
+      <h3>E-mail: {{dadosMotorista.email}}</h3>
+      <br><hr>
+    </ion-label>
+  </ion-item>
+
+  <div class="div-btn">
+    <button class="btn btn-verde mt-5" (click)="onBuscarNovoMotorista()">Buscar novo motorista</button>
+    <button class="btn btn-vermelho" (click)="onSairEscolar()">Sair do escolar</button>
+  </div>
+</ion-content>

@@ -23,4 +23,16 @@ export class TabPerfilPage implements OnInit {
   onMeusDadosClick() {
     this.navCtrl.navigateForward('dados-usuario');
   }
+
+  onDadosVeiculo() {
+    this.navCtrl.navigateForward('dados-veiculo');
+  }
+
+  onDadosEnderecoClick() {
+    this.navCtrl.navigateForward('dados-endereco');
+  }
+
+  onAlterarSenha() {
+    this.navCtrl.navigateForward('alterar-senha');
+  }
 }

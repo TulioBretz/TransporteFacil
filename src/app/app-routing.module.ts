@@ -47,6 +47,26 @@ const routes: Routes = [
   {
     path: 'dados-usuario',
     loadChildren: () => import('./pages/perfil/dados-usuario/dados-usuario.module').then(m => m.DadosUsuarioPageModule)
+  },
+  {
+    path: 'dados-veiculo',
+    loadChildren: () => import('./pages/perfil/dados-veiculo/dados-veiculo.module').then( m => m.DadosVeiculoPageModule)
+  },
+  {
+    path: 'dados-endereco',
+    loadChildren: () => import('./pages/perfil/dados-endereco/dados-endereco.module').then( m => m.DadosEnderecoPageModule)
+  },
+  {
+    path: 'alterar-senha',
+    loadChildren: () => import('./pages/perfil/alterar-senha/alterar-senha.module').then( m => m.AlterarSenhaPageModule)
+  },
+  {
+    path: 'dados-motorista',
+    loadChildren: () => import('./pages/dados-motorista/dados-motorista.module').then( m => m.DadosMotoristaPageModule)
+  },
+  {
+    path: 'dados-aluno',
+    loadChildren: () => import('./pages/dados-aluno/dados-aluno.module').then( m => m.DadosAlunoPageModule)
   }
 ];
 @NgModule({
