@@ -57,18 +57,15 @@ export class SegurancaPagePage implements OnInit {
 
     if (!this.cadastroForm.valid) {
       this.validationText = ErrorMessageEnum.camposObrigatorios;
-      return;
+      return false;
     }
 
     if (this.cadastroForm.get('senha').value !== this.cadastroForm.get('confirmarSenha').value) {
-      this.validationText = ErrorMessageEnum.senhaDivergente;
-      return;
-    }
-
-    // Caso esteja exibindo alguma mensagem de validação, não deixa prosseguir
-    if (this.validationText) {
+      this.validationText = ErrorMessageEnum.senhaConfirmacaoDivergente;
       return false;
     }
+
+    this.validationText = '';
 
     return true;
   }

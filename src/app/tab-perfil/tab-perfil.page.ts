@@ -35,4 +35,8 @@ export class TabPerfilPage implements OnInit {
   onAlterarSenha() {
     this.navCtrl.navigateForward('alterar-senha');
   }
+
+  onCartaoVirtual() {
+    this.navCtrl.navigateForward('cartao-virtual');
+  }
 }

@@ -20,6 +20,11 @@
       <ion-label>Dados do veículo</ion-label>
     </ion-item>
 
+    <ion-item (click)="onCartaoVirtual()" *ngIf="requestsService.dadosUsuarioLogado.codigoMotorista">
+      <fa-icon icon="address-card" slot="start"></fa-icon>
+      <ion-label>Cartão virtual</ion-label>
+    </ion-item>
+
     <ion-item (click)="onAlterarSenha()">
       <fa-icon icon="key" slot="start"></fa-icon>
       <ion-label>Alterar senha</ion-label>

@@ -103,18 +103,18 @@ export class RequestsService {
             message: messageText,
             buttons: [
                 {
-                  text: 'Não',
-                  role: 'cancel',
-                  handler: () => {}
+                    text: 'Não',
+                    role: 'cancel',
+                    handler: () => { }
                 },
                 {
-                  text: 'Sim',
-                  role: 'confirm',
-                  handler: () => {
-                    this.confirmarAlertPergunta();
-                  },
+                    text: 'Sim',
+                    role: 'confirm',
+                    handler: () => {
+                        this.confirmarAlertPergunta();
+                    },
                 }
-              ]
+            ]
         });
 
         await alert.present();
@@ -151,6 +151,13 @@ export class RequestsService {
         return this.http.get<any>(this.serverRoute + '/api/alunos/ingressados/' + codigoEscolar)
             .pipe(
                 catchError(this.handleError<any>('obter alunos ingressados no escolar'))
+            );
+    }
+
+    obterMuralMotoristas() {
+        return this.http.get<any>(this.serverRoute + '/api/motoristas/mural/')
+            .pipe(
+                catchError(this.handleError<any>('obter mural de motoristas'))
             );
     }
     //#endregion

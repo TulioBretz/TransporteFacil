@@ -1,7 +1,10 @@
+import { PerfilService } from './../perfil.service';
+import { RequestsService } from 'src/app/compartilhado/services/requests.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/compartilhado/services/global.service';
 import { ErrorMessageEnum } from 'src/app/compartilhado/enums/error-message-enum';
+import { AlterarDadosSenhaModel } from '../models/aterar-dados-senha-model';
 
 @Component({
   selector: 'app-alterar-senha',
@@ -18,7 +21,8 @@ export class AlterarSenhaPage implements OnInit {
 
   validationText = '';
 
-  constructor(private fb: FormBuilder, public globalService: GlobalService) { }
+  constructor(private fb: FormBuilder, public globalService: GlobalService, private requestsService: RequestsService,
+    private perfilService: PerfilService) { }
 
   ngOnInit() {
   }
@@ -37,25 +41,51 @@ export class AlterarSenhaPage implements OnInit {
     this.alterarSenhaForm.get('senha').setValidators([Validators.required, Validators.minLength(1)]);
     this.alterarSenhaForm.get('senha').updateValueAndValidity();
 
-    this.alterarSenhaForm.get('confirmarSenha').setValidators(Validators.required);
-    this.alterarSenhaForm.get('confirmarSenha').updateValueAndValidity();
+    this.alterarSenhaForm.get('novaSenha').setValidators(Validators.required);
+    this.alterarSenhaForm.get('novaSenha').updateValueAndValidity();
 
-    if (!this.alterarSenhaForm.valid) {
-      this.validationText = ErrorMessageEnum.camposObrigatorios;
-      return;
-    }
+    this.alterarSenhaForm.get('confirmarNovaSenha').setValidators(Validators.required);
+    this.alterarSenhaForm.get('confirmarNovaSenha').updateValueAndValidity();
 
-    if (this.alterarSenhaForm.get('senha').value !== this.alterarSenhaForm.get('confirmarSenha').value) {
+    // Valida se a senha informada no Login é divergente da inserida na tela
+    if (this.requestsService.dadosUsuarioLogado.senha !== this.alterarSenhaForm.get('senha').value) {
       this.validationText = ErrorMessageEnum.senhaDivergente;
-      return;
-    }
-
-    // Caso esteja exibindo alguma mensagem de validação, não deixa prosseguir
-    if (this.validationText) {
       return false;
     }
 
+    if (!this.alterarSenhaForm.valid) {
+      this.validationText = ErrorMessageEnum.camposObrigatorios;
+      return false;
+    }
+
+    if (this.alterarSenhaForm.get('novaSenha').value !== this.alterarSenhaForm.get('confirmarNovaSenha').value) {
+      this.validationText = ErrorMessageEnum.senhaConfirmacaoDivergente;
+      return false;
+    }
+
+    this.validationText = '';
+
     return true;
+  }
+
+  onSalvar() {
+
+    if (!this.efetuarValidacoes()) {
+      return;
+    }
+
+    const dadosSenhaAlterados = new AlterarDadosSenhaModel();
+
+    dadosSenhaAlterados.id = this.requestsService.dadosUsuarioLogado.id;
+    dadosSenhaAlterados.senha = this.alterarSenhaForm.get('novaSenha').value;
+
+    this.perfilService.salvarDadosSenha(dadosSenhaAlterados).subscribe((resposta: any) => {
+      if (resposta) {
+        this.requestsService.presentToastPositivoTop('Senha alterada com sucesso.');
+        this.requestsService.dadosUsuarioLogado.senha = dadosSenhaAlterados.senha;
+        this.alterarSenhaForm.reset();
+      }
+    });
   }
 
 }

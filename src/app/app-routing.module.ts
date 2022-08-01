@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -67,6 +68,14 @@ const routes: Routes = [
   {
     path: 'dados-aluno',
     loadChildren: () => import('./pages/dados-aluno/dados-aluno.module').then( m => m.DadosAlunoPageModule)
+  },
+  {
+    path: 'mural-motoristas',
+    loadChildren: () => import('./pages/mural-motoristas/mural-motoristas.module').then( m => m.MuralMotoristasPageModule)
+  },
+  {
+    path: 'cartao-virtual',
+    loadChildren: () => import('./pages/cartao-virtual/cartao-virtual.module').then( m => m.CartaoVirtualPageModule)
   }
 ];
 @NgModule({

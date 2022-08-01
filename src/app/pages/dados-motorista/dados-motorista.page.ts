@@ -47,4 +47,7 @@ export class DadosMotoristaPage implements OnInit {
     this.requestsService.presentAlertPergunta('Atenção', 'Tem certeza que deseja ser desvinculado deste escolar?', '');
   }
 
+  onBuscarNovoMotorista() {
+    this.navCtrl.navigateRoot('tabs/mural-motoristas');
+  }
 }

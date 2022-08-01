@@ -1,3 +1,4 @@
+import { AlterarDadosSenhaModel } from './models/aterar-dados-senha-model';
 /* eslint-disable max-len */
 import { AlterarDadosUsuarioModel } from './models/alterar-dados-usuario-model';
 import { HttpClient } from '@angular/common/http';
@@ -24,6 +25,13 @@ export class PerfilService {
     return this.http.put<any>(this.requestsService.serverRoute + '/api/usuarios/alterarendereco', dadosEndereco, this.requestsService.httpOptions)
       .pipe(
         catchError(this.requestsService.handleError<any>('alterar dados de endereço'))
+      );
+  }
+
+  salvarDadosSenha(dadosSenha: AlterarDadosSenhaModel) {
+    return this.http.put<any>(this.requestsService.serverRoute + '/api/usuarios/alterarsenha', dadosSenha, this.requestsService.httpOptions)
+      .pipe(
+        catchError(this.requestsService.handleError<any>('alterar a senha do usuário'))
       );
   }
 

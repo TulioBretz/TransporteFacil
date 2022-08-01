@@ -69,17 +69,17 @@ export class GlobalService {
     validarFormatoDeSenha(senha: string): boolean {
         const regexp = new RegExp('/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/');
 
-        // if (!regexp.test(senha)) {
-        //     return false;
-        // }
+        if (!regexp.test(senha)) {
+            return false;
+        }
 
-        // if (!senha.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/)) {
-        //     return false;
-        // }
+        if (!senha.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/)) {
+            return false;
+        }
 
-        // if (senha.search(regexExpr) === -1) {
-        //     return false;
-        // }
+        if (senha.search(regexp) === -1) {
+            return false;
+        }
 
         return true;
     }
