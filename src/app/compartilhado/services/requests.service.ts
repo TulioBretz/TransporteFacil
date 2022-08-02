@@ -18,6 +18,7 @@ export class RequestsService {
 
     alertPerguntaChanged = new Subject<boolean>();
     dadosUsuarioLogado: Usuario = new Usuario();
+    alunosIngressadosList;
     primeiroAcesso = true;
 
     constructor(private toastController: ToastController, private alertController: AlertController, private http: HttpClient) {
@@ -158,6 +159,13 @@ export class RequestsService {
         return this.http.get<any>(this.serverRoute + '/api/motoristas/mural/')
             .pipe(
                 catchError(this.handleError<any>('obter mural de motoristas'))
+            );
+    }
+
+    obterGrupos() {
+        return this.http.get<any>(this.serverRoute + '/api/grupos/grupos/' + this.dadosUsuarioLogado.codigoMotorista)
+            .pipe(
+                catchError(this.handleError<any>('obter grupos'))
             );
     }
     //#endregion

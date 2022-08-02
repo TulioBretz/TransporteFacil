@@ -16,15 +16,13 @@ export class TabAlunosPage implements OnInit {
   constructor(private requestsService: RequestsService, private navCtrl: NavController) { }
 
   ngOnInit() {
-    this.requestsService.obterListaAlunosIngressadosPorCodigo(this.requestsService.dadosUsuarioLogado.codigoMotorista).subscribe((resposta: any) => {
-      console.log(resposta, 'resposta');
-      if (resposta && resposta.length === 0) {
-        this.requestsService.presentToastTop('Nenhum aluno ingressado no escolar até o momento.');
-        return;
-      }
 
-      this.alunosIngressadosList = resposta;
-    });
+    if (!this.requestsService.alunosIngressadosList || (this.requestsService.alunosIngressadosList &&
+      !this.requestsService.alunosIngressadosList.length)) {
+      this.requestsService.presentToastTop('Nenhum aluno ingressado no escolar até o momento.');
+    }
+
+    this.alunosIngressadosList = this.requestsService.alunosIngressadosList;
   }
 
   onAlunoClick(alunoId: string) {

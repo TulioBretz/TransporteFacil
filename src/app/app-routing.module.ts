@@ -76,6 +76,10 @@ const routes: Routes = [
   {
     path: 'cartao-virtual',
     loadChildren: () => import('./pages/cartao-virtual/cartao-virtual.module').then( m => m.CartaoVirtualPageModule)
+  },
+  {
+    path: 'novo-grupo',
+    loadChildren: () => import('./pages/novo-grupo/novo-grupo.module').then( m => m.NovoGrupoPageModule)
   }
 ];
 @NgModule({

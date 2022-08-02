@@ -85,7 +85,7 @@ export class CadastroAlunoDadosInstituicaoPagePage implements OnInit {
     }
 
     if (!this.validarHorarioMaiorQueAnterior(this.cadastroForm.get('horarioDe').value, this.cadastroForm.get('horarioAte').value)) {
-      this.validationText = ErrorMessageEnum.horariosFinalMaiorQueFinal;
+      this.validationText = ErrorMessageEnum.horariosFinalMaiorQueInicial;
       return;
     }
 

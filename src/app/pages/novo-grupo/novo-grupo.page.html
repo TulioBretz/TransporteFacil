@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Novo Grupo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="novoGrupoForm">
+    <div class="input-div">
+      <ion-label position="stacked">Nome do grupo</ion-label>
+      <ion-input formControlName="titulo" class="input" maxlength="50"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Descrição</ion-label>
+      <ion-input formControlName="descricao" class="input" maxlength="100"></ion-input>
+    </div>
+
+    <div class="input-div">
+      <ion-label position="stacked">Horário</ion-label>
+
+      <ion-item class="ion-margin-bottom ion-margin">
+        <ion-label>De:</ion-label>
+        <ion-input [brmasker]="{mask:'00:00', len:5, userCaracters: false, type: 'num'}" inputmode="numeric"
+          formControlName="horarioDe" (change)="horarioDeChange()"></ion-input>
+        <div class="ion-text-center" *ngIf="!horarioDeValido">
+          <span class="validator-span">Horario inválido</span>
+        </div>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom ion-margin">
+        <ion-label>Até:</ion-label>
+        <ion-input [brmasker]="{mask:'00:00', len:5, userCaracters: false, type: 'num'}" inputmode="numeric"
+          formControlName="horarioAte" (change)="horarioAteChange()"></ion-input>
+        <div class="ion-text-center" *ngIf="!horarioAteValido">
+          <span class="validator-span">Horario inválido</span>
+        </div>
+      </ion-item>
+    </div>
+  </form>
+
+  <div class="div-btn mt-5">
+    <button id="open-modal" expand="block" class="btn btn-preto">SELECIONAR ALUNOS</button>
+  </div>
+
+  <ion-modal trigger="open-modal">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="onCancelar()">Voltar</ion-button>
+          </ion-buttons>
+          <ion-title>Alunos</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="onConfirmar()" [strong]="true">Confirmar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+
+        <ion-list>
+          <ion-item *ngFor="let item of alunosIngressadosList">
+            <ion-label>{{item.alunoNome}}</ion-label>
+            <ion-checkbox slot="end" [(ngModel)]="item.marcado"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+
+        <!-- <ion-list>
+
+          <div *ngFor="let item of alunosIngressadosList">
+            <ion-item>
+              <ion-avatar slot="start">
+                <img src="./avatar-poe.png" title="Imagem aluno" />
+              </ion-avatar>
+              <ion-label>
+                <h2><strong>{{item.nome}}</strong></h2>
+                <h3>Rua: {{item.rua}}, {{item.numero}}</h3>
+                <h3>Bairro: {{item.bairro}}</h3>
+                <h3 *ngIf="item.apto">Apto: {{item.apto}}, Bloco: {{item.bloco}}</h3>
+                <h3>Telefone: {{item.telefone}}</h3>
+              </ion-label>
+            </ion-item>
+          </div>
+
+        </ion-list> -->
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <div class="div-btn">
+    <button class="btn btn-verde" (click)="onSalvar()">CRIAR</button>
+  </div>
+</ion-content>

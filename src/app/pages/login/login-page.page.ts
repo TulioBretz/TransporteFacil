@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { ErrorMessageEnum } from 'src/app/compartilhado/enums/error-message-enum';
 import { LoginPageService } from './login-page.service';
 import { FormBuilder } from '@angular/forms';
@@ -21,7 +22,7 @@ export class LoginPagePage implements OnInit {
   });
 
   constructor(public navCtrl: NavController, private fb: FormBuilder, private loginService: LoginPageService,
-    private requestsService: RequestsService, private alertController: AlertController, private cadastroService: CadastroService) { }
+    private requestsService: RequestsService, private alertController: AlertController) { }
 
   ngOnInit() {
 
@@ -46,6 +47,17 @@ export class LoginPagePage implements OnInit {
       else if (resposta && resposta.length > 0) {
         this.requestsService.dadosUsuarioLogado = resposta[0];
         this.requestsService.primeiroAcesso = true;
+
+        if (this.requestsService.dadosUsuarioLogado.codigoMotorista) {
+          this.requestsService.obterListaAlunosIngressadosPorCodigo(this.requestsService.dadosUsuarioLogado.codigoMotorista).subscribe((respostaAlunos: any) => {
+            if (respostaAlunos && respostaAlunos.length === 0) {
+              return;
+            }
+
+            this.requestsService.alunosIngressadosList = respostaAlunos;
+          });
+        }
+
         this.navCtrl.navigateRoot('');
       }
     });

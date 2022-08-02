@@ -5,7 +5,7 @@ export enum ErrorMessageEnum {
     senhaDivergente = 'Senha informada divergente da senha atual',
     senhaFormatoIncorreto = 'A senha não atende aos requisitos',
     horariosPreenchimentoIncorreto = 'Preencha corretamente os horários',
-    horariosFinalMaiorQueFinal = 'O horário final deve ser maior que o inicial',
+    horariosFinalMaiorQueInicial = 'O horário final deve ser maior que o inicial',
     loginSenhaInvalidos = 'Login ou Senha inválidos',
     codigoMotoristaNaoGerado = 'Houve uma falha ao gerar o código do motorista. <br><br>Favor voltar a tela anterior e repetir o processo.'
 }

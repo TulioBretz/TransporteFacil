@@ -34,8 +34,8 @@
 
       <ion-item class="ion-margin-bottom ion-margin">
         <ion-label>De:</ion-label>
-        <ion-input [brmasker]="{mask:'00:00', len:5, userCaracters: false, type: 'num'}" inputmode="numeric" formControlName="horarioDe"
-        (change)="horarioDeChange()"></ion-input>
+        <ion-input [brmasker]="{mask:'00:00', len:5, userCaracters: false, type: 'num'}" inputmode="numeric"
+          formControlName="horarioDe" (change)="horarioDeChange()"></ion-input>
         <div class="ion-text-center" *ngIf="!horarioDeValido">
           <span class="validator-span">Horario inválido</span>
         </div>
@@ -43,13 +43,13 @@
 
       <ion-item class="ion-margin-bottom ion-margin">
         <ion-label>Até:</ion-label>
-        <ion-input [brmasker]="{mask:'00:00', len:5, userCaracters: false, type: 'num'}" inputmode="numeric" formControlName="horarioAte"
-        (change)="horarioAteChange()"></ion-input>
+        <ion-input [brmasker]="{mask:'00:00', len:5, userCaracters: false, type: 'num'}" inputmode="numeric"
+          formControlName="horarioAte" (change)="horarioAteChange()"></ion-input>
         <div class="ion-text-center" *ngIf="!horarioAteValido">
           <span class="validator-span">Horario inválido</span>
         </div>
       </ion-item>
-      </div>
+    </div>
 
   </form>
 

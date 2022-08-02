@@ -1,7 +1,8 @@
 <ion-content [fullscreen]="true">
-  <div class="ion-text-center ion-margin-top mt-5">
+  <ion-row class="ion-text-center ion-margin-top mt-5">
     <ion-label class="titulo">Grupos</ion-label>
-  </div>
+    <ion-icon class="add-icon" name="add-circle-outline" (click)="onAddGrupoClick()"></ion-icon>
+  </ion-row >
 
   <ion-searchbar placeholder="Filtrar..." #searchbar (ionInput)="onFiltrarInput()">
   </ion-searchbar>
