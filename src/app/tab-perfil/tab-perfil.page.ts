@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class TabPerfilPage implements OnInit {
 
 
-  constructor(private fb: FormBuilder, private navCtrl: NavController, private requestsService: RequestsService) { }
+  constructor(private fb: FormBuilder, private navCtrl: NavController, public requestsService: RequestsService) { }
 
   ngOnInit(): void {
   }

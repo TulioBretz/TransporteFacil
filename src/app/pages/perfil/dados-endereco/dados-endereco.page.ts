@@ -96,8 +96,4 @@ export class DadosEnderecoPage implements OnInit {
     });
   }
 
-  cepChanged() {
-
-  }
-
 }

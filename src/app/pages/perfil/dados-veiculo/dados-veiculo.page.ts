@@ -14,9 +14,14 @@ export class DadosVeiculoPage implements OnInit {
     tipoVeiculo: [{ value: '', disabled: true }]
   });
 
+  modoEdicao = false;
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+  }
+
+  onEditar() {
   }
 
 }

@@ -4,9 +4,6 @@
     <ion-icon class="add-icon" name="add-circle-outline" (click)="onAddGrupoClick()"></ion-icon>
   </ion-row>
 
-  <ion-searchbar placeholder="Filtrar..." #searchbar (ionInput)="onFiltrarInput()">
-  </ion-searchbar>
-
   <ion-list>
     <div *ngFor="let item of gruposList">
       <ion-item-sliding style="display: contents">
