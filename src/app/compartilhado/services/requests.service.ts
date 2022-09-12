@@ -156,7 +156,7 @@ export class RequestsService {
     }
 
     obterMuralMotoristas() {
-        return this.http.get<any>(this.serverRoute + '/api/motoristas/mural/')
+        return this.http.get<any>(this.serverRoute + '/api/motoristas/muralmotoristas/')
             .pipe(
                 catchError(this.handleError<any>('obter mural de motoristas'))
             );
@@ -166,6 +166,20 @@ export class RequestsService {
         return this.http.get<any>(this.serverRoute + '/api/grupos/grupos/' + this.dadosUsuarioLogado.codigoMotorista)
             .pipe(
                 catchError(this.handleError<any>('obter grupos'))
+            );
+    }
+
+    deletarGrupo(grupoId: string) {
+        return this.http.delete<any>(this.serverRoute + '/api/grupos/grupo/' + grupoId)
+            .pipe(
+                catchError(this.handleError<any>('deletar grupo'))
+            );
+    }
+
+    obterAlunosGrupo(grupoId: string) {
+        return this.http.get<any>(this.serverRoute + '/api/grupos/alunos/' + grupoId)
+            .pipe(
+                catchError(this.handleError<any>('obter alunos do grupo'))
             );
     }
     //#endregion

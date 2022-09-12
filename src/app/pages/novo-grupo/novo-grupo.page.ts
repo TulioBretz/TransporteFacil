@@ -1,5 +1,6 @@
+import { AlunosGrupoModel } from './../../compartilhado/models/AlunosGrupoModel';
 import { NavController } from '@ionic/angular';
-import { NovoGrupoModel } from './../../compartilhado/models/NovoGrupoModel';
+import { GrupoModel } from './../../compartilhado/models/GrupoModel';
 import { NovoGrupoService } from './novo-grupo.service';
 import { RequestsService } from 'src/app/compartilhado/services/requests.service';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -16,10 +17,10 @@ import { Guid } from 'guid-typescript';
 export class NovoGrupoPage implements OnInit {
 
   novoGrupoForm = this.fb.group({
-    titulo: [''],
-    descricao: [''],
-    horarioDe: [],
-    horarioAte: []
+    titulo: ['ddd'],
+    descricao: ['ddd'],
+    horarioDe: ['11:00'],
+    horarioAte: ['15:00']
   });
 
   horarioDeValido = true;
@@ -29,7 +30,7 @@ export class NovoGrupoPage implements OnInit {
   alunosIngressadosList = [new AlunosSelecaoModel()];
 
   constructor(private fb: FormBuilder, private requestsService: RequestsService, private service: NovoGrupoService,
-    private navCtrl: NavController) {}
+    private navCtrl: NavController) { }
 
   ngOnInit() {
     this.requestsService.alunosIngressadosList.forEach(element => {
@@ -105,7 +106,7 @@ export class NovoGrupoPage implements OnInit {
       return;
     }
 
-    const novoGrupo = new NovoGrupoModel();
+    const novoGrupo = new GrupoModel();
     novoGrupo.id = Guid.create().toString();
     novoGrupo.codigoMotorista = this.requestsService.dadosUsuarioLogado.codigoMotorista;
     novoGrupo.titulo = this.novoGrupoForm.get('titulo').value;
@@ -113,21 +114,42 @@ export class NovoGrupoPage implements OnInit {
     novoGrupo.horarioDe = this.novoGrupoForm.get('horarioDe').value;
     novoGrupo.horarioAte = this.novoGrupoForm.get('horarioAte').value;
 
-    this.service.criarNovoGrupo(novoGrupo).subscribe((resposta: any) => {
-      if (resposta) {
-        this.requestsService.presentToastPositivoTop('Grupo criado com sucesso.');
-        this.navCtrl.navigateRoot('tabs/tab-grupos');
-      }
+    let alunosSelecionados = [new AlunosSelecaoModel()];
+    alunosSelecionados = this.alunosIngressadosList.filter(x => x.marcado);
+
+    alunosSelecionados.forEach(element => {
+      const novoAlunoGrupo = new AlunosGrupoModel();
+      novoAlunoGrupo.alunoId = element.alunoId;
+      novoAlunoGrupo.alunoNome = element.alunoNome;
+      novoAlunoGrupo.alunoInstituicao = element.alunoInstituicao;
+      novoAlunoGrupo.grupoId = novoGrupo.id;
+
+      novoGrupo.alunosGrupo.push(novoAlunoGrupo);
     });
+
+    if (!novoGrupo.alunosGrupo[0].alunoId) {
+      novoGrupo.alunosGrupo.splice(0, 1);
+    }
+
+    //novoGrupo.alunoId = (this.alunosIngressadosList.find(x => x.marcado).alunoId);
+
+    {
+      this.service.criarNovoGrupo(novoGrupo).subscribe((resposta: any) => {
+        if (resposta) {
+          this.requestsService.presentToastPositivoTop('Grupo criado com sucesso.');
+          this.navCtrl.navigateRoot('tabs/tab-grupos');
+        }
+      });
+    }
   }
 
   onCancelar() {
-    const modal = document.querySelector('ion-modal');
-    modal.dismiss(null, 'cancel');
+    const modalNovoAluno = document.querySelector('ion-modal');
+    modalNovoAluno.dismiss(null, 'cancel');
   }
 
   onConfirmar() {
-    const modal = document.querySelector('ion-modal');
-    modal.dismiss(null, 'confirm');
+    const modalNovoAluno = document.querySelector('ion-modal');
+    modalNovoAluno.dismiss(null, 'confirm');
   }
 }

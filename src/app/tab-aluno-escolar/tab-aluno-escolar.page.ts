@@ -26,18 +26,11 @@ export class TabAlunoEscolarPage extends SimularLifecycle implements OnInit {
     super(router, route);
 
     if (this.requestsService.tipoUsuarioLogado() === TipoUsuarioEnum.motorista) {
-      // this.navCtrl.navigateRoot('tab-motorista-codigo');
       return;
     }
   }
 
   onEnter(): void {
-    // if (this.requestsService.tipoUsuarioLogado() === TipoUsuarioEnum.motorista) {
-    //   this.navCtrl.navigateRoot('tabs/tab-grupos');
-    // }
-  }
-
-  ngOnInit(): void {
     if (!this.requestsService.dadosUsuarioLogado.codigoEscolar) {
       return;
     }
@@ -68,9 +61,11 @@ export class TabAlunoEscolarPage extends SimularLifecycle implements OnInit {
         return;
       }
 
-      console.log(resposta, 'resposta');
       this.alunosIngressadosList = resposta;
     });
+  }
+
+  ngOnInit(): void {
   }
 
   onFiltrarInput() {
@@ -90,5 +85,9 @@ export class TabAlunoEscolarPage extends SimularLifecycle implements OnInit {
     };
 
     this.navCtrl.navigateForward('dados-motorista', navigationExtras);
+  }
+
+  onBuscarNovoMotorista() {
+    this.navCtrl.navigateForward('mural-motoristas');
   }
 }

@@ -1,7 +1,6 @@
 import { Guid } from 'guid-typescript';
 
 export class Usuario {
-    _id = '';
     id = '';
     nome = '';
     cpf = '';

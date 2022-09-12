@@ -1,3 +1,5 @@
+import { NavController } from '@ionic/angular';
+import { RequestsService } from 'src/app/compartilhado/services/requests.service';
 
 import { Component } from '@angular/core';
 
@@ -8,6 +10,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  constructor() {
+  constructor(private requestsService: RequestsService, private navCtrl: NavController) {
+    if (!this.requestsService.usuarioLogado()) {
+      this.navCtrl.navigateRoot('login-page');
+      return;
+    }
   }
+
 }

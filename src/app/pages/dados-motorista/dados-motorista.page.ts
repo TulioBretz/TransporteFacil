@@ -48,6 +48,6 @@ export class DadosMotoristaPage implements OnInit {
   }
 
   onBuscarNovoMotorista() {
-    this.navCtrl.navigateRoot('tabs/mural-motoristas');
+    this.navCtrl.navigateForward('mural-motoristas');
   }
 }

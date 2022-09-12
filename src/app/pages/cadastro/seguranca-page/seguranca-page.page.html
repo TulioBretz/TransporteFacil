@@ -18,7 +18,7 @@
 
     <div class="ion-text-center ion-margin">
       <span class="information-span">
-        A senha deve conter no mínimo 8 dígitos com: letras, números e caracteres especiais.
+        A senha deve conter no mínimo 8 dígitos.
       </span>
     </div>
 
@@ -30,7 +30,8 @@
 
     <div class="input-div">
       <ion-label position="stacked">Confirmar senha</ion-label>
-      <ion-input class="input" type="password" formControlName="confirmarSenha" minlength="8" maxlength="50">
+      <ion-input class="input" type="password" formControlName="confirmarSenha" minlength="8" maxlength="50"
+      (change)="onSenhaChange()">
       </ion-input>
     </div>
   </form>

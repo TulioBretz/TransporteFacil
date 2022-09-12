@@ -22,7 +22,6 @@ export class DadosAlunoPage implements OnInit {
       if (this.router.getCurrentNavigation().extras?.state) {
         const navParams = this.router.getCurrentNavigation().extras.state;
         this.dadosAluno = navParams.dadosAluno;
-        console.log(this.dadosAluno, 'DADOS ALUNO');
       }
     });
 

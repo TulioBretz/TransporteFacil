@@ -45,10 +45,10 @@
   </form>
 
   <div class="div-btn mt-5">
-    <button id="open-modal" expand="block" class="btn btn-preto">SELECIONAR ALUNOS</button>
+    <button id="open-modal-selecionar-aluno" expand="block" class="btn btn-preto">SELECIONAR ALUNOS</button>
   </div>
 
-  <ion-modal trigger="open-modal">
+  <ion-modal id="novo-grupo-modal" trigger="open-modal-selecionar-aluno">
     <ng-template>
       <ion-header>
         <ion-toolbar>
@@ -70,24 +70,6 @@
           </ion-item>
         </ion-list>
 
-        <!-- <ion-list>
-
-          <div *ngFor="let item of alunosIngressadosList">
-            <ion-item>
-              <ion-avatar slot="start">
-                <img src="./avatar-poe.png" title="Imagem aluno" />
-              </ion-avatar>
-              <ion-label>
-                <h2><strong>{{item.nome}}</strong></h2>
-                <h3>Rua: {{item.rua}}, {{item.numero}}</h3>
-                <h3>Bairro: {{item.bairro}}</h3>
-                <h3 *ngIf="item.apto">Apto: {{item.apto}}, Bloco: {{item.bloco}}</h3>
-                <h3>Telefone: {{item.telefone}}</h3>
-              </ion-label>
-            </ion-item>
-          </div>
-
-        </ion-list> -->
       </ion-content>
     </ng-template>
   </ion-modal>

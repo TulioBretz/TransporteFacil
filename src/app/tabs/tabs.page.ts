@@ -24,11 +24,6 @@ export class TabsPage extends SimularLifecycle implements OnInit {
   }
 
   onEnter(): void {
-    if (!this.requestsService.usuarioLogado()) {
-      this.navCtrl.navigateRoot('login-page');
-      return;
-    }
-
     if (this.requestsService.primeiroAcesso) {
       this.requestsService.primeiroAcesso = false;
       if (this.usuarioMotorista) {

@@ -20,6 +20,10 @@
     <div class="div-btn">
       <button class="btn btn-verde" (click)="onIngressar()">Ingressar em um escolar</button>
     </div>
+
+    <div class="div-btn">
+      <button class="btn btn-preto mt-2" (click)="onBuscarNovoMotorista()">Encontrar um motorista</button>
+    </div>
   </div>
 </ion-content>
 
@@ -36,7 +40,7 @@
 
     <ion-item lines="none" *ngIf="dadosMotorista && dadosVeiculo" (click)="onMotoristaClick()">
       <ion-avatar slot="start">
-        <img src="./avatar-finn.png" title="Imagem motorista" />
+        <img src="../../assets/avatar.png" title="Imagem motorista" />
       </ion-avatar>
       <ion-label >
         <h2><strong>{{dadosMotorista.nome}}</strong></h2>
@@ -46,7 +50,7 @@
     </ion-item>
 
     <div class="div-btn mt-2">
-      <button class="btn btn-verde" (click)="onIngressar()">Mostrar localização</button>
+      <button disabled="true" class="btn btn-cinza" (click)="onIngressar()">Mostrar localização (Em breve)</button>
     </div>
   </ion-list>
 

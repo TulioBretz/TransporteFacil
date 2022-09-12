@@ -4,64 +4,35 @@
       <ion-back-button color="dark" [icon]="buttonIcon">
       </ion-back-button>
     </ion-buttons>
+    <ion-title>Mural de motoristas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <div class="ion-text-center ion-margin-top mb-3">
-    <ion-label class="titulo">Mural de motoristas</ion-label>
-  </div>
+  <div *ngFor="let item of muralMotoristasList">
 
-  <ion-refresher style="position: sticky" slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
+    <ion-card class="card">
+      <div class="ion-display-block">
+        <label class="autor mb-2 mt-2"><strong>{{item.motoristaNome}}</strong></label>
+      </div>
 
-  <ion-searchbar style="border-radius: 38px; background-color: transparent;" placeholder="Filtrar..." #searchbar
-    (ionInput)="inputChanged()">
-  </ion-searchbar>
+      <div class="ion-display-block">
+        <label class="autor mb-2 mt-2">{{item.motoristaTelefone}}</label>
+      </div>
 
-  <ion-list>
-    <div *ngFor="let item of solicitacoesList">
-      <ion-item style="display: contents">
-        <ion-card class="card">
-          <ion-item lines="none">
-            <!-- <ion-avatar slot="start" class="avatar">
-              <img [src]="item.autorimagem">
-            </ion-avatar> -->
-            <label slot="start"
-              class="label-imagem-perfil-md">{{compartilhadoService.formatarImagem(item.autor)}}</label>
-            <ion-row>
-              <p class="autor">{{item.autor}}</p>
-              <label class="solicitacao">{{item.texto}}</label>
-              <ion-row style="align-items: baseline;" *ngIf="item.privada">
-                <p class="solicitacao-rodape ion-margin-right">{{item.data}} - </p>
-                <i class="fas fa-lock" style="color: #a0a0a0; margin-right: 5px;"></i>
-                <p class="solicitacao-rodape">Privada</p>
-              </ion-row>
-              <ion-row style="align-items: baseline;" *ngIf="!item.privada">
-                <p class="solicitacao-rodape ion-margin-right">{{item.data}} - </p>
-                <i class="fas fa-users" style="color: #a0a0a0; margin-right: 5px;"></i>
-                <p class="solicitacao-rodape">Pública</p>
-              </ion-row>
-            </ion-row>
-          </ion-item>
-          <ion-item-options side="end"
-            *ngIf="item.usuarioid === compartilhadoService.usuarioLogado.id || compartilhadoService.usuarioLogado.sindico">
-            <ion-item-option (click)="presentAlertConfirm(item['_id'])" style="background-color: #eb445a">
-              <ion-icon class="footer-icons-white" name="trash"></ion-icon>
-            </ion-item-option>
-          </ion-item-options>
-        </ion-card>
-      </ion-item>
-    </div>
-  </ion-list>
+      <div class="ion-display-block">
+        <label class="autor mb-2 mt-2">{{item.motoristaEmail}}</label>
+      </div>
 
-  <div class="div-btn">
-    <div class="ion-text-center">
-      <span class="validator-span">{{validationText}}</span>
-    </div>
-    <button class="btn btn-preto" (click)="onAvancar()" *ngIf="cadastroTipoText === 'motorista'">Avançar</button>
-    <button class="btn btn-verde" (click)="onEntrar()" *ngIf="cadastroTipoText === 'aluno'">Entrar</button>
+      <div class="ion-display-block">
+        <label class="autor mb-2 mt-2">Tipo de veiculo: {{item.motoristaTipoVeiculo}}</label>
+      </div>
+
+      <div class="ion-display-block mt-2">
+        <label class="autor mb-2 mt-3">Locais de atendimento: {{item.locaisAtendimento}}</label>
+      </div>
+    </ion-card>
+
   </div>
 </ion-content>

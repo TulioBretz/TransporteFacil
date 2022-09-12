@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Alunos do grupo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let item of alunosList">
+      <ion-label>{{item.alunoNome}}</ion-label>
+      <ion-label>{{item.alunoInstituicao}}</ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="item.marcado"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <div class="div-btn">
+    <button class="btn btn-verde" (click)="onSalvar()">SALVAR</button>
+  </div>
+</ion-content>

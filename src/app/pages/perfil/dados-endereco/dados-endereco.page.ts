@@ -27,10 +27,7 @@ export class DadosEnderecoPage implements OnInit {
 
   constructor(private fb: FormBuilder, public globalService: GlobalService, private requestsService: RequestsService,
     private perfilService: PerfilService) {
-    console.log(this.requestsService.dadosUsuarioLogado, 'usuario logado form');
-
     this.enderecoForm.patchValue(this.requestsService.dadosUsuarioLogado);
-    console.log(this.enderecoForm.value, 'endereco form');
   }
 
   ngOnInit() {

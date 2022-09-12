@@ -80,6 +80,10 @@ const routes: Routes = [
   {
     path: 'novo-grupo',
     loadChildren: () => import('./pages/novo-grupo/novo-grupo.module').then( m => m.NovoGrupoPageModule)
+  },
+  {
+    path: 'alunos-do-grupo',
+    loadChildren: () => import('./pages/alunos-do-grupo/alunos-do-grupo.module').then( m => m.AlunosDoGrupoPageModule)
   }
 ];
 @NgModule({

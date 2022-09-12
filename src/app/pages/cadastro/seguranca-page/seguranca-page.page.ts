@@ -15,7 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SegurancaPagePage implements OnInit {
 
   cadastroForm = this.fb.group({
-    senha: [''],
+    senha: ['', [Validators.required, Validators.minLength(8)]],
     confirmarSenha: [''],
   });
 
@@ -49,7 +49,7 @@ export class SegurancaPagePage implements OnInit {
   }
 
   efetuarValidacoes(): boolean {
-    this.cadastroForm.get('senha').setValidators([Validators.required, Validators.minLength(1)]);
+    this.cadastroForm.get('senha').setValidators([Validators.required, Validators.minLength(8)]);
     this.cadastroForm.get('senha').updateValueAndValidity();
 
     this.cadastroForm.get('confirmarSenha').setValidators(Validators.required);

@@ -16,48 +16,22 @@
   <form [formGroup]="cartaoVirtualForm">
 
     <div class="input-div">
-      <ion-label position="stacked">Descrição</ion-label>
-      <ion-textarea rows="5" placeholder="Digite aqui..." formControlName="descricao" class="input-text-area"
-        maxlength="500"></ion-textarea>
-    </div>
-
-    <div class="input-div">
       <ion-label position="stacked">Locais de atendimento</ion-label>
-      <ion-textarea rows="3" placeholder="Digite aqui..." formControlName="locais" class="input-text-area"
+      <ion-textarea rows="4" placeholder="Digite aqui..." formControlName="locaisAtendimento" class="input-text-area"
         maxlength="255"></ion-textarea>
     </div>
   </form>
 
   <ion-card class="card">
-    <ion-item lines="none">
-      <!-- <label slot="start"
-        class="label-imagem-perfil-md">{{compartilhadoService.formatarImagem(item.autor)}}</label> -->
-      <ion-row>
-        <label class="autor mb-2 mt-1"><strong>{{dadosMotorista.nome}}</strong></label>
+      <div class="ion-display-block">
+        <label class="autor mb-2 mt-2"><strong>{{dadosMotorista.nome}}</strong></label>
+      </div>
 
-        <div class="ion-display-block">
-          <label class="mb-2"><strong>Locais:</strong></label>
-        </div>
-        <label class="solicitacao mb-2">Alípio de Melo / Glória / Padre Eustáquio / Coração Eucarístico</label>
+      <div class="ion-display-block mt-2">
+        <label><strong>Locais de atendimento:</strong></label>
+      </div>
 
-        <div>
-          <label><strong>Descrição:</strong></label>
-        </div>
-        <label class="solicitacao mb-2">Sou um motorista responsável, prezo por qualidade e pontualidade.</label>
-
-        <!-- <ion-row style="align-items: baseline;" *ngIf="!item.privada">
-          <p class="solicitacao-rodape ion-margin-right">{{item.data}} - </p>
-          <i class="fas fa-users" style="color: #a0a0a0; margin-right: 5px;"></i>
-          <p class="solicitacao-rodape">Pública</p>
-        </ion-row> -->
-      </ion-row>
-    </ion-item>
-    <!-- <ion-item-options side="end"
-      *ngIf="item.usuarioid === compartilhadoService.usuarioLogado.id || compartilhadoService.usuarioLogado.sindico">
-      <ion-item-option (click)="presentAlertConfirm(item['_id'])" style="background-color: #eb445a">
-        <ion-icon class="footer-icons-white" name="trash"></ion-icon>
-      </ion-item-option>
-    </ion-item-options> -->
+      <label class="solicitacao mb-2">{{cartaoVirtualForm.get('locaisAtendimento').value}}</label>
   </ion-card>
 
   <div class="div-btn">

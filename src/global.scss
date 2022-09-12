@@ -106,6 +106,13 @@ ion-title {
     border: 2px solid #00A9C0;
 }
 
+.btn-cinza {
+    background-color: #dadada;
+    color: white;
+    --background: #dadada;
+    border: 2px solid #dadada;
+}
+
 .absolute-bottom {
     bottom: 10px;
     position: absolute;

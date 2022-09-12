@@ -28,12 +28,11 @@ export class CadastroService {
 
             //TODO: Provisório
             data.dadosUsuario.codigoMotorista = this.dadosProvisoriosUsuarioForm.codigoMotorista;
-            console.log(data, 'data');
 
             // const teste = {teste: 'teste'};
             return this.http.post<any>(this.requestsService.serverRoute + '/api/usuarios/motorista', data, this.requestsService.httpOptions)
                 .pipe(
-                    catchError(this.requestsService.handleError<any>('inserir gasto'))
+                    catchError(this.requestsService.handleError<any>('cadastrar usuário'))
                 );
         }
         else {
@@ -41,12 +40,10 @@ export class CadastroService {
             data.dadosUsuario = { ...this.dadosProvisoriosUsuarioForm };
             data.dadosAluno = { ...this.dadosProvisoriosAlunoForm };
 
-            console.log(data, 'data');
-
             // const teste = {teste: 'teste'};
             return this.http.post<any>(this.requestsService.serverRoute + '/api/usuarios/aluno', data, this.requestsService.httpOptions)
                 .pipe(
-                    catchError(this.requestsService.handleError<any>('inserir gasto'))
+                    catchError(this.requestsService.handleError<any>('cadastrar usuário'))
                 );
         }
 

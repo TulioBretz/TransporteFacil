@@ -1,3 +1,4 @@
+import { CartaoVirtualService } from './cartao-virtual.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +17,7 @@ import { CartaoVirtualPage } from './cartao-virtual.page';
     ReactiveFormsModule,
     CartaoVirtualPageRoutingModule
   ],
-  declarations: [CartaoVirtualPage]
+  declarations: [CartaoVirtualPage],
+  providers: [CartaoVirtualService]
 })
 export class CartaoVirtualPageModule {}
