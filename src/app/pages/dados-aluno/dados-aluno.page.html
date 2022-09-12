@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button color="dark" [icon]="buttonIcon">
+      <ion-back-button color="dark">
       </ion-back-button>
     </ion-buttons>
     <ion-title>Dados do aluno</ion-title>
@@ -10,7 +10,7 @@
 
 <ion-content>
 
-  <ion-item lines="none" *ngIf="dadosAluno" (click)="onMotoristaClick()" class="mt-3">
+  <ion-item lines="none" *ngIf="dadosAluno" class="mt-3">
     <ion-avatar slot="start">
       <img src="../../../assets/avatar.png" title="Imagem aluno" />
     </ion-avatar>

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button color="dark" [icon]="buttonIcon">
+      <ion-back-button color="dark">
       </ion-back-button>
     </ion-buttons>
     <ion-title>Cadastro</ion-title>
@@ -18,7 +18,7 @@
     <div class="input-div">
       <ion-label position="stacked">CEP</ion-label>
       <ion-input class="input" inputmode="numeric" formControlName="cep" minlength="9" maxlength="9"
-        (change)="cepChanged($event)" [brmasker]="{mask:'00000-000', len:9, userCaracters: false, type: 'num'}">
+        [brmasker]="{mask:'00000-000', len:9, userCaracters: false, type: 'num'}">
       </ion-input>
     </div>
 

@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable no-underscore-dangle */
-import { OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil, filter, tap } from 'rxjs/operators';
 
+@Component({
+    template: ''
+})
+// eslint-disable-next-line @angular-eslint/component-class-suffix
 export abstract class SimularLifecycle implements OnDestroy {
 
     private ngUnsubscribe: Subject<void> = new Subject();
