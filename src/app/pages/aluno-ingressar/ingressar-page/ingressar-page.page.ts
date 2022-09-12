@@ -32,7 +32,7 @@ export class IngressarPagePage implements OnInit {
       }
       else if (resposta && resposta.length > 0) {
         this.requestsService.presentToastPositivoTop('Usuário ingressado no escolar com sucesso!');
-        this.requestsService.dadosUsuarioLogado.codigoEscolar = resposta[0].codigo;
+        this.requestsService.dadosUsuarioLogado.codigoEscolar = resposta[0].codigoMotorista;
         this.navCtrl.navigateRoot('tabs/tab-aluno-escolar');
       }
     });

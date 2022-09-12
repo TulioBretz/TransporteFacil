@@ -50,8 +50,6 @@ export class TabAlunoEscolarPage extends SimularLifecycle implements OnInit {
           this.dadosVeiculo.tipoVeiculo = this.dadosVeiculo.tipoVeiculo[0].toUpperCase() +
             this.dadosVeiculo.tipoVeiculo.substring(1);
         }
-
-
       }
     });
 
