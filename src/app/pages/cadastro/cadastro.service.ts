@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Aluno } from 'src/app/compartilhado/models/Aluno';
+import { InstituicaoModel } from 'src/app/compartilhado/models/InstituicaoModel';
 
 @Injectable()
 export class CadastroService {
@@ -15,6 +16,7 @@ export class CadastroService {
     dadosProvisoriosUsuarioForm = new Usuario();
     dadosProvisoriosMotoristaForm = new Motorista();
     dadosProvisoriosAlunoForm = new Aluno();
+    dadosProvisoriosInstituicaoForm = new InstituicaoModel();
 
     constructor(private http: HttpClient, private requestsService: RequestsService) { }
 
@@ -36,9 +38,10 @@ export class CadastroService {
                 );
         }
         else {
-            const data: { dadosUsuario: Usuario; dadosAluno: Aluno } = { dadosUsuario: new Usuario(), dadosAluno: new Aluno()};
+            const data: { dadosUsuario: Usuario; dadosAluno: Aluno; dadosInstituicao: InstituicaoModel } = { dadosUsuario: new Usuario(), dadosAluno: new Aluno(), dadosInstituicao: new InstituicaoModel()};
             data.dadosUsuario = { ...this.dadosProvisoriosUsuarioForm };
             data.dadosAluno = { ...this.dadosProvisoriosAlunoForm };
+            data.dadosInstituicao = { ...this.dadosProvisoriosInstituicaoForm };
 
             // const teste = {teste: 'teste'};
             return this.http.post<any>(this.requestsService.serverRoute + '/api/usuarios/aluno', data, this.requestsService.httpOptions)

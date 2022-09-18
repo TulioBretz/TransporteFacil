@@ -1,3 +1,4 @@
+import { CadastroService } from './../cadastro.service';
 /* eslint-disable max-len */
 import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/compartilhado/services/global.service';
@@ -24,7 +25,7 @@ export class CadastroAlunoDadosInstituicaoPagePage implements OnInit {
   horarioAteValido = true;
   validationText = '';
 
-  constructor(private fb: FormBuilder, public globalService: GlobalService, private navCtrl: NavController) { }
+  constructor(private fb: FormBuilder, public globalService: GlobalService, private navCtrl: NavController, private cadastroService: CadastroService) { }
 
   //TODO: Implementar o OnInit para tabs. Os Validations devem ir para false nele
   ngOnInit() {
@@ -88,6 +89,12 @@ export class CadastroAlunoDadosInstituicaoPagePage implements OnInit {
       this.validationText = ErrorMessageEnum.horariosFinalMaiorQueInicial;
       return;
     }
+
+    this.cadastroService.dadosProvisoriosInstituicaoForm.alunoId = this.cadastroService.dadosProvisoriosUsuarioForm.id;
+    this.cadastroService.dadosProvisoriosInstituicaoForm.instituicaoNome = this.cadastroForm.get('intituicaoNome').value;
+    this.cadastroService.dadosProvisoriosInstituicaoForm.turno = this.cadastroForm.get('turno').value;
+    this.cadastroService.dadosProvisoriosInstituicaoForm.horarioDe = this.cadastroForm.get('horarioDe').value;
+    this.cadastroService.dadosProvisoriosInstituicaoForm.horarioAte = this.cadastroForm.get('horarioAte').value;
 
     const navigationExtras: NavigationExtras = {
       state: {
