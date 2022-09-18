@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
 import { ErrorMessageEnum } from 'src/app/compartilhado/enums/error-message-enum';
 import { RequestsService } from 'src/app/compartilhado/services/requests.service';
 import { CadastroService } from './../cadastro.service';

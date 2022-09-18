@@ -4,6 +4,10 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { ErrorMessageEnum } from 'src/app/compartilhado/enums/error-message-enum';
 import { Guid } from 'guid-typescript';
+import { Usuario } from 'src/app/compartilhado/models/Usuario';
+import { Motorista } from 'src/app/compartilhado/models/Motorista';
+import { Aluno } from 'src/app/compartilhado/models/Aluno';
+import { InstituicaoModel } from 'src/app/compartilhado/models/InstituicaoModel';
 
 @Component({
   selector: 'app-dados-pessoais-page',
@@ -26,6 +30,10 @@ export class DadosPessoaisPagePage implements OnInit {
   constructor(private navCtrl: NavController, private fb: FormBuilder, private cadastroService: CadastroService) { }
 
   ngOnInit() {
+    this.cadastroService.dadosProvisoriosUsuarioForm = new Usuario();
+    this.cadastroService.dadosProvisoriosMotoristaForm = new Motorista();
+    this.cadastroService.dadosProvisoriosAlunoForm = new Aluno();
+    this.cadastroService.dadosProvisoriosInstituicaoForm = new InstituicaoModel();
   }
 
   onAvancar() {

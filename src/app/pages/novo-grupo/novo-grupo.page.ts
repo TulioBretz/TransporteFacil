@@ -17,10 +17,10 @@ import { Guid } from 'guid-typescript';
 export class NovoGrupoPage implements OnInit {
 
   novoGrupoForm = this.fb.group({
-    titulo: ['ddd'],
-    descricao: ['ddd'],
-    horarioDe: ['11:00'],
-    horarioAte: ['15:00']
+    titulo: [''],
+    descricao: [''],
+    horarioDe: [''],
+    horarioAte: ['']
   });
 
   horarioDeValido = true;

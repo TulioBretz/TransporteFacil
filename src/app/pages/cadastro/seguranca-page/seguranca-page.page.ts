@@ -1,4 +1,3 @@
-import { RequestsService } from './../../../compartilhado/services/requests.service';
 import { CadastroService } from './../cadastro.service';
 import { GlobalService } from 'src/app/compartilhado/services/global.service';
 import { NavController } from '@ionic/angular';
@@ -6,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ErrorMessageEnum } from 'src/app/compartilhado/enums/error-message-enum';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RequestsService } from 'src/app/compartilhado/services/requests.service';
 
 @Component({
   selector: 'app-seguranca-page',
@@ -24,7 +24,8 @@ export class SegurancaPagePage implements OnInit {
   codigoGerado = '';
 
   constructor(private fb: FormBuilder, private navCtrl: NavController, private globalService: GlobalService,
-    private route: ActivatedRoute, private router: Router, private cadastroService: CadastroService) {
+    private route: ActivatedRoute, private router: Router, private cadastroService: CadastroService,
+    private requestsService: RequestsService) {
 
     this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation().extras?.state) {
@@ -81,10 +82,11 @@ export class SegurancaPagePage implements OnInit {
     this.cadastroService.dadosProvisoriosUsuarioForm.senha = this.cadastroForm.get('senha').value;
 
     this.cadastroService.cadastrarUsuario().subscribe(resposta => {
-
+      if (resposta) {
+        this.requestsService.presentToastPositivoTop('Motorista cadastrado com sucesso!');
+        this.navCtrl.navigateForward('cadastro-realizado-page');
+      }
     });
-
-    this.navCtrl.navigateForward('cadastro-realizado-page');
   }
 
   // Fluxo aluno
@@ -96,21 +98,22 @@ export class SegurancaPagePage implements OnInit {
     this.cadastroService.dadosProvisoriosUsuarioForm.senha = this.cadastroForm.get('senha').value;
 
     this.cadastroService.cadastrarUsuario().subscribe(resposta => {
-
+      if (resposta) {
+        this.requestsService.presentToastPositivoTop('Aluno cadastrado com sucesso!');
+        this.navCtrl.navigateForward('login-page');
+      }
     });
-
-    this.navCtrl.navigateForward('login-page');
   }
 
   gerarCodigoMotorista() {
     let novoCodigoRandomico = '';
-    const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvxw123456789)(';
+    const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvxw123456789$#@!+)(';
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 10; i++) {
       novoCodigoRandomico += characters.charAt(Math.floor(Math.random() * characters.length));
     }
 
-    this.codigoGerado =  this.cadastroService.dadosProvisoriosMotoristaForm.dadosVeiculo.placa + novoCodigoRandomico;
+    this.codigoGerado = novoCodigoRandomico;
 
     this.cadastroService.dadosProvisoriosUsuarioForm.codigoMotorista = this.codigoGerado;
   }
