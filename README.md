@@ -13,3 +13,11 @@ https://onedrive.live.com/?authkey=%21ANc%2D9P9JQvgPyiI&id=962B6234E706B01A%2157
 ### Link para o vídeo de algumas funcionalidades já desenvolvidas:
 https://1drv.ms/v/s!AhqwBuc0YiuWovU6mYxMJQTbPcOoVQ?e=sTDT2T
 
+
+### Link para o vídeo do MVP:
+https://1drv.ms/v/s!AhqwBuc0YiuWovU7toZGYaW4xmJOJw?e=ztP17g
+
+
+### Link para o arquivo .APK gerado a partir do MVP
+https://1drv.ms/u/s!AhqwBuc0YiuWovU8ymmPFiO1nnD6kQ?e=Lt3in3
+
